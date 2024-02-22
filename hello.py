@@ -1,11 +1,11 @@
 
-#Praca z funkcjami:
+#Work with functions:
 
 
-pierwszyTekst = "programować"
+pierwszy_tekst = "programming"
 z = float(3)
 if 3>2:
-    print("Zacznij "+pierwszyTekst)
+    print("Zacznij "+pierwszy_tekst)
     print(type(z))
    
 
