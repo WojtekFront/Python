@@ -1,3 +1,20 @@
+friends = ['John','Andrew','Tom','Gregory']
+lucky_numbers = [1,2,3,4,5,6,7,8,22,23,24,25,26,27,28]
+friends.insert(3, "Joohn")
+friends.extend(lucky_numbers)
+
+print(friends.index('John'))
+
+# friends[0] = 'Michael'
+# friends.append('friends')
+# print(friends)
+# friends.remove('Andrew')  
+# print(friends)
+# friends.pop(0) 
+# print(friends)
+# friends.reverse()
+# print(friends)
+
 #--------------------------------------------------------------------------
 # Mad Libs Game
 # color = input("Enter a color: ")
