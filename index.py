@@ -1,8 +1,6 @@
 from math import *
 
-
-
-character_word = 'Fucking'
+character_word = 'Magic'
 
 print('hello '+ character_word.upper() +' world')
 print('this world is really '+ character_word.lower() +' awesome')
