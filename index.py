@@ -1,5 +1,17 @@
+#------------------------------------------------------------------------------
+# retun informations
+def multiply(a, b):
+    if (type(a) == (float or int)) and (type(b) == (float or int)):
+        a = float(a)
+        b = float(b)
+        c = a * b
+    else:
+        c = type(a)
+    return c
 
+print( multiply(7, 2))
 
+print( multiply(2, "word"))
 
 #------------------------------------------------------------------------------
 # learning functions and parameters
