@@ -1,4 +1,21 @@
 #------------------------------------------------------------------------------
+# monthConversions = {
+#     "Jan": "January",
+#     "Feb": "February",
+#     "Mar": "March",
+#     "Apr": "April",
+#     "May": "May",
+#     "Jun": "June",
+#     "Jul": "July",
+#     "Aug": "August",
+#     "Sep": "September",
+#     "Oct": "October",
+#     "Nov": "November",
+#     "Dec": "December"
+# }
+# print(monthConversions.get("Oce","Not valid keyword"))
+
+#------------------------------------------------------------------------------
 # retun informations
 # def multiply(a, b):
 #     if isinstance(a,(int,float)) and not isinstance(a,(bool)) and isinstance(b,(int,float)) and not isinstance(b,(bool)):
