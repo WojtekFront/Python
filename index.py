@@ -1,10 +1,17 @@
-friends = ['John','Andrew','Tom','Gregory']
-lucky_numbers = [1,2,3,4,5,6,7,8,22,23,24,25,26,27,28]
-friends.insert(3, "Joohn")
-friends.extend(lucky_numbers)
+# 1:20
+# tupple 
+coordinates = [(1,2), (3,4), (5,6), (7,8),]
+print(coordinates[0])
 
-print(friends.index('John'))
 
+#--------------------------------------------------------------------------
+# friends = ['John','Andrew','Tom','Gregory']
+# lucky_numbers = [1,2,3,4,5,6,7,8,22,23,24,25,26,27,28]
+# friends.insert(3, "Joohn")
+# friends.extend(lucky_numbers)
+# print(friends.count(1))
+# print(friends.index('John'))
+# friends.sort() - not mix numbers with strings
 # friends[0] = 'Michael'
 # friends.append('friends')
 # print(friends)
