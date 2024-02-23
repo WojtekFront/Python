@@ -1,16 +1,21 @@
 #------------------------------------------------------------------------------
 # retun informations
-def multiply(a, b):
-    if isinstance(a,(int,float)) and isinstance(b,(int,float)):
-        a = float(a)
-        b = float(b)
-        c = a * b
-    else:
-        c = "Not a number"
-    return c
+# def multiply(a, b):
+#     if isinstance(a,(int,float)) and not isinstance(a,(bool)) and isinstance(b,(int,float)) and not isinstance(b,(bool)):
+#         a = float(a)
+#         b = float(b)
+#         c = a * b
+#     elif not isinstance(a,(int,float)) and isinstance(b,(int,float)):
+#         c = "A is not a number. Is " + str(type(a))
+#     elif isinstance(a,(int,float)) and not isinstance(b,(int,float)):
+#         c = "B is not a number. Is " + str(type(b)) 
+#     else:
+#         c = "Invalid value"
+#     return c
 
-print( multiply(7, 2))
-print( multiply(2, "word"))
+# print( "1: " + str(multiply(7, 2)))
+# print( "2: " + str(multiply(2, "word")))
+# print( "3: " + str(multiply(True, 3)))
 
 #------------------------------------------------------------------------------
 # learning functions and parameters
