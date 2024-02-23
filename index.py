@@ -1,16 +1,15 @@
 #------------------------------------------------------------------------------
 # retun informations
 def multiply(a, b):
-    if (type(a) == (float or int)) and (type(b) == (float or int)):
+    if isinstance(a,(int,float)) and isinstance(b,(int,float)):
         a = float(a)
         b = float(b)
         c = a * b
     else:
-        c = type(a)
+        c = "Not a number"
     return c
 
 print( multiply(7, 2))
-
 print( multiply(2, "word"))
 
 #------------------------------------------------------------------------------
