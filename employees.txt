@@ -1,0 +1,6 @@
+John Travolta, <travolta@gmail.com>, sales
+Anna Travolta, <Anna@gmail.com>, sales
+Robert Par, <Robert@gmail.com>, development
+Mike Par, <Mike@gmail.com>, director
+Gregory Wie, <gregory@gmail.com>, warehousemanager
+Max Char, <maxChar@gmail.com>, warehouse worker
