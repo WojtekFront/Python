@@ -10,10 +10,10 @@ questions_prompts = [
 questions = [
    Question(questions_prompts[0], "a"),
    Question(questions_prompts[1], "d"),
-   Question(questions_prompts[2], "1")
+   Question(questions_prompts[2], "a")
    ]
 
-def ask_question(questions): # pylint: disable= operator 
+def ask_question(questions): 
     score = 0
     for question in questions:
         answer = input(question.prompt)
