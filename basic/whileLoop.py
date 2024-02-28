@@ -1,19 +1,35 @@
-secret_word = "one"
-guess_word = input("Guess a word: ")
-how_many_guesses = 3
-guess_count = 0
-out_of_guesses = False
+my_value = 0
 
-while guess_word != secret_word and not (out_of_guesses):
-    if guess_count < how_many_guesses:
-        guess_word = input("Guess a word: ")
-        guess_count += 1
-    else:
-        out_of_guesses = True
-if not out_of_guesses:
-    print("\n\nYou guessed the word!")
-else:
-    print("\n\nYou ran out of guesses!")
+while True:
+    print(my_value)
+    my_value += 1
+    if my_value >= 10:
+        print("\n Good Job")
+        break
+
+# -----------------------------------------------------------------------------
+# my_value = 0
+# while my_value <= 10:
+#     print(my_value)
+#     my_value += 1
+
+#------------------------------------------------------------------------------
+# secret_word = "one"
+# guess_word = input("Guess a word: ")
+# how_many_guesses = 3
+# guess_count = 0
+# out_of_guesses = False
+
+# while guess_word != secret_word and not (out_of_guesses):
+#     if guess_count < how_many_guesses:
+#         guess_word = input("Guess a word: ")
+#         guess_count += 1
+#     else:
+#         out_of_guesses = True
+# if not out_of_guesses:
+#     print("\n\nYou guessed the word!")
+# else:
+#     print("\n\nYou ran out of guesses!")
 
 # first_value = 1
 
