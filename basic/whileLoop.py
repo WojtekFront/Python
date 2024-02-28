@@ -1,11 +1,36 @@
-my_value = 0
-
+import re
 while True:
-    print(my_value)
-    my_value += 1
-    if my_value >= 10:
-        print("\n Good Job")
+    name = input("Enter your name: ")
+    if re.match("^[a-zA-Z]+$", name):
         break
+    else:
+        print("Please enter a valid name")
+
+print("Hello, " + name)
+
+# -----------------------------------------------------------------------------
+# min_lenght = 2
+# name = ""
+# while True:
+#     name = input("Enter your name: ")
+#     if name:
+#         break
+#     else:
+#         print("Please enter a valid name")
+
+# print("Your name is {name}".format(name=name))    
+
+# while not(len(name) >= min_lenght and name.isprintable() and name.isalpha()):
+
+# -----------------------------------------------------------------------------
+# my_value = 0
+
+# while True:
+#     print(my_value)
+#     my_value += 1
+#     if my_value >= 10:
+#         print("\n Good Job")
+#         break
 
 # -----------------------------------------------------------------------------
 # my_value = 0
