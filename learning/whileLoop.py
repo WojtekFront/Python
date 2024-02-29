@@ -1,12 +1,22 @@
-import re
-while True:
-    name = input("Enter your name: ")
-    if re.match("^[a-zA-Z]+$", name):
-        break
-    else:
-        print("Please enter a valid name")
 
-print("Hello, " + name)
+# -----------------------------------------------------------------------------
+# a = 0
+# while a <= 10:
+#     a += 1
+#     if a % 2 == 0:
+#         continue
+#     print(a)
+
+# -----------------------------------------------------------------------------
+# import re
+# while True:
+#     name = input("Enter your name: ")
+#     if re.match("^[a-zA-Z]+$", name):
+#         break
+#     else:
+#         print("Please enter a valid name")
+
+# print("Hello, " + name)
 
 # -----------------------------------------------------------------------------
 # min_lenght = 2
