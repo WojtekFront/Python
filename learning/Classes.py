@@ -6,9 +6,15 @@ class Classes:
     def area(self):
         return self.width * self.height
     
-    def to_string(self):
+    def __str__(self):
+        return f'width: {self.width}, height: {self.height}'
+    
+    def __repr__(self):
         return f'width: {self.width}, height: {self.height}'
     
 new_classes = Classes(25, 3)
 
-print(new_classes.t())
+print(repr(new_classes))
+
+
+# print(new_classes.__str__())

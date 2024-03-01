@@ -1,0 +1,135 @@
+quiz_questions = [
+    {
+        "Question": "How is the present continuous formed or used?",
+        "Options": ["a) He is eating", "b) He eats", "c) He ate", "d) He will eat"],
+        "Correct Answer": ["a", "He is eating"],
+        "English Rule": "The present continuous tense is used for actions happening right now or current temporary situations."
+    },
+    {
+        "Question": "How is the simple present formed or used?",
+        "Options": ["a) He eats", "b) He eat", "c) He is eating", "d) He ate"],
+        "Correct Answer": ["a", "He eats"],
+        "English Rule": "The simple present tense is used for regular habits or universal truths."
+    },
+    {
+        "Question": "How is the present continuous formed or used?",
+        "Options": ["a) He is eating", "b) He eats", "c) He ate", "d) He will eat"],
+        "Correct Answer": ["a", "He is eating"],
+        "English Rule": "The present continuous tense is used for actions happening right now or current temporary situations."
+    },
+    {
+        "Question": "How is the present continuous formed or used?",
+        "Options": ["a) He is eating", "b) He eats", "c) He ate", "d) He will eat"],
+        "Correct Answer": ["a", "He is eating"],
+        "English Rule": "The present continuous tense is used for actions happening right now or current temporary situations."
+    },
+    {
+        "Question": "Which option correctly uses the simple past tense?",
+        "Options": ["a) She is going to the store", "b) She goes to the store", "c) She went to the store", "d) She will go to the store"],
+        "Correct Answer": ["c", "She went to the store"],
+        "English Rule": "The simple past tense is used for actions that were completed at a specific time in the past."
+    },
+    {
+        "Question": "How is the simple future tense formed or used?",
+        "Options": ["a) He will eat", "b) He ate", "c) He eats", "d) He is eating"],
+        "Correct Answer": ["a", "He will eat"],
+        "English Rule": "The simple future tense is used for actions that will happen in the future."
+    },
+    {
+        "Question": "Which sentence correctly uses the present perfect tense?",
+        "Options": ["a) She has visited Paris last year", "b) She has visited Paris", "c) She visited Paris", "d) She is visiting Paris"],
+        "Correct Answer": ["b", "She has visited Paris"],
+        "English Rule": "The present perfect tense is used for actions that occurred at an unspecified time before now."
+    },
+    {
+        "Question": "Select the sentence that correctly uses the past perfect tense.",
+        "Options": ["a) She had left when he arrived", "b) She has left when he arrived", "c) She left when he arrived", "d) She was leaving when he arrived"],
+        "Correct Answer": ["a", "She had left when he arrived"],
+        "English Rule": "The past perfect tense is used for actions that were completed before another action in the past."
+    },
+    {
+        "Question": "Which sentence uses the future perfect tense correctly?",
+        "Options": ["a) He will have finished the project by tomorrow", "b) He will finish the project by tomorrow", "c) He finishes the project by tomorrow", "d) He is finishing the project by tomorrow"],
+        "Correct Answer": ["a", "He will have finished the project by tomorrow"],
+        "English Rule": "The future perfect tense is used for actions that will be completed before a specific time in the future."
+    },
+    {
+        "Question": "How is the present continuous tense used to talk about the future?",
+        "Options": ["a) I am meeting her next Friday", "b) I meet her next Friday", "c) I will meet her next Friday", "d) I have met her next Friday"],
+        "Correct Answer": ["a", "I am meeting her next Friday"],
+        "English Rule": "The present continuous tense can be used for planned future events."
+    },
+    {
+        "Question": "Choose the sentence that correctly differentiates between simple past and present perfect.",
+        "Options": ["a) I lost my keys", "b) I have lost my keys", "c) I lose my keys", "d) I am losing my keys"],
+        "Correct Answer": ["b", "I have lost my keys"],
+        "English Rule": "The present perfect is used for actions without a specified time, unlike the simple past."
+    },
+    {
+        "Question": "Which sentence correctly uses the past continuous tense?",
+        "Options": ["a) He was cooking when she called", "b) He cooked when she called", "c) He is cooking when she called", "d) He has been cooking when she called"],
+        "Correct Answer": ["a", "He was cooking when she called"],
+        "English Rule": "The past continuous is used for actions that were in progress at a specific time in the past."
+    },
+    {
+        "Question": "Select the correct future continuous tense usage.",
+        "Options": ["a) He will be sleeping at 10 pm", "b) He sleeps at 10 pm", "c) He slept at 10 pm", "d) He is sleeping at 10 pm"],
+        "Correct Answer": ["a", "He will be sleeping at 10 pm"],
+        "English Rule": "The future continuous tense is used for actions that will be happening at a specific time in the future."
+    },
+    {
+        "Question": "Which sentence uses the present perfect continuous correctly?",
+        "Options": ["a) She has been reading for three hours", "b) She is reading for three hours", "c) She reads for three hours", "d) She had been reading for three hours"],
+        "Correct Answer": ["a", "She has been reading for three hours"],
+        "English Rule": "The present perfect continuous is used for actions that started in the past and continue to the present."
+    },
+    {
+        "Question": "How is the present continuous formed or used?",
+        "Options": ["a) He is eating", "b) He eats", "c) He ate", "d) He will eat"],
+        "Correct Answer": ["a", "He is eating"],
+        "English Rule": "The present continuous tense is used for actions happening right now or current temporary situations."
+    },
+    {
+        "Question": "Which option correctly uses the simple past tense?",
+        "Options": ["a) She is going to the store", "b) She goes to the store", "c) She went to the store", "d) She will go to the store"],
+        "Correct Answer": ["c", "She went to the store"],
+        "English Rule": "The simple past tense is used for actions that were completed at a specific time in the past."
+    },
+    {
+        "Question": "How is the future simple tense formed or used?",
+        "Options": ["a) He will eat", "b) He eats", "c) He ate", "d) He is eating"],
+        "Correct Answer": ["a", "He will eat"],
+        "English Rule": "The future simple tense is used for actions that will happen at a time beyond the present."
+    },
+    {
+        "Question": "Select the correct form of the present perfect tense:",
+        "Options": ["a) She has sings", "b) She have sung", "c) She has sung", "d) She sings"],
+        "Correct Answer": ["c", "She has sung"],
+        "English Rule": "The present perfect tense is used for actions that occurred at an unspecified time before now."
+    },
+    {
+        "Question": "Which sentence uses the past perfect tense correctly?",
+        "Options": ["a) She had sung", "b) She has sung", "c) She sung", "d) She was singing"],
+        "Correct Answer": ["a", "She had sung"],
+        "English Rule": "The past perfect tense is used to talk about actions that were completed before another action in the past."
+    },
+    {
+        "Question": "Identify the correct future continuous tense:",
+        "Options": ["a) He will be eating", "b) He will eat", "c) He ate", "d) He eats"],
+        "Correct Answer": ["a", "He will be eating"],
+        "English Rule": "The future continuous tense is used for actions that will be happening at a future time."
+    },
+    {
+        "Question": "Choose the sentence that correctly uses the past continuous tense:",
+        "Options": ["a) He was eating", "b) He ate", "c) He is eating", "d) He will be eating"],
+        "Correct Answer": ["a", "He was eating"],
+        "English Rule": "The past continuous tense is used to indicate that a longer action in the past was interrupted."
+    },
+    {
+        "Question": "Which option is in the present perfect continuous tense?",
+        "Options": ["a) He is eating", "b) He has been eating", "c) He ate", "d) He was eating"],
+        "Correct Answer": ["b", "He has been eating"],
+        "English Rule": "The present perfect continuous tense is used for actions that began in the past and continue to the present."
+    }
+]
+

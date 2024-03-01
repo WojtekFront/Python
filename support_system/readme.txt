@@ -1,0 +1,1 @@
+In this project, we are creating a program to support new employees and monitor progress
