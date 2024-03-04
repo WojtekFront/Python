@@ -1,18 +1,28 @@
+
+
+num_val = int("A13F", base=16)
+print(num_val)
+
+# -----------------------------------------------------------------------------
+# import sys
+
+# print(sys.getsizeof("bla blaz bla bla"))
+# print(sys.getsizeof(1))
+
+# -----------------------------------------------------------------------------
 # def my_func(self):
 #     return self
 
-def cube(fn_a):
-    return fn_a ** 3
+# def cube(fn_a):
+#     return fn_a ** 3
 
-def select_function(fn_a):
-    if fn_a > 0:
-        return cube(fn_a)
-    else:
-        return 0
+# def select_function(fn_a):
+#     if fn_a > 0:
+#         return cube(fn_a)
+#     else:
+#         return 0
 
-
-select_function(2)(3)
-
+# select_function(2)(3)
 
 # f=select_function(2)
 # print(f is select_function(2))
