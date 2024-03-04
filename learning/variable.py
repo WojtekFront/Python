@@ -1,16 +1,44 @@
-a= 10
-b=10
+# def my_func(self):
+#     return self
 
-a = [1,2,3]
-b = [1,2,3]
-print(a is b)
-print(a == b)
+def cube(fn_a):
+    return fn_a ** 3
+
+def select_function(fn_a):
+    if fn_a > 0:
+        return cube(fn_a)
+    else:
+        return 0
 
 
-a = [1,2,3]
+select_function(2)(3)
 
 
+# f=select_function(2)
+# print(f is select_function(2))
+# print(f == select_function(2))
+# print(f)
+# print(f is 4)
+# print(f == 4)
 
+# print(cube(3)
+#       )
+# print(my_func(1))
+
+# help(my_func(1))
+
+# -----------------------------------------------------------------------------
+# a= 10
+# b=10
+
+# a = [1,2,3]
+# b = [1,2,3]
+
+# a = 10
+# b= 10.0
+# print(a is b)
+# print(b is a)
+# print(a == b)
 
 # Garbage Collection
 # import ctypes
