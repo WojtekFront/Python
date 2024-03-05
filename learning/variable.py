@@ -1,7 +1,26 @@
 
+# import fractions
 
-num_val = int("A13F", base=16)
-print(num_val)
+# a = fractions.Fraction(22,9)
+# print(a)
+# print(float(a))
+# print(int(a))
+
+# -----------------------------------------------------------------------------
+# n = 100
+# b = 3 
+
+# value = ( n // b ) * b + n % b 
+
+# print(n % b)
+# print(value)
+
+
+# num_val = int("1010", base=8)
+# num_val1 = int("1010", base=10)
+# print(bin(num_val1))
+# print(oct(num_val1))
+# print(hex(num_val1))
 
 # -----------------------------------------------------------------------------
 # import sys
