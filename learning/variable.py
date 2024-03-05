@@ -1,4 +1,21 @@
 
+# -----------------------------------------------------------------------------
+from fractions import Fraction
+import sys
+
+# print(Fraction(denominator = 2, numerator = 3))
+# print(Fraction('22/7'))
+
+a = Fraction(22,7)
+a = a.limit_denominator(4)
+print(float(a))
+
+# b= 11
+# print(sys.getsizeof(a))
+# print(sys.getsizeof(b))
+# print(float(a + b))
+
+# -----------------------------------------------------------------------------
 # import fractions
 
 # a = fractions.Fraction(22,9)
