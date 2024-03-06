@@ -4,10 +4,50 @@
 # ------------------------------------------------------------------------------
 import decimal
 from decimal import Decimal
-import math
+import math, sys
+import time
 
 
-# Decimal.getcontex().prec=0
+def run_float(n=1):
+    a = 3.1415
+    for i in range(n):
+       math.sqrt(a)
+
+def run_decimal(n=1):
+    a = Decimal('3.1415')
+    for i in range(n):
+        a.sqrt() 
+
+n = 5000000
+
+start = time.perf_counter()
+run_float(n)
+end = time.perf_counter()
+print('float: ', end-start)
+
+
+start = time.perf_counter()
+run_decimal(n)
+end = time.perf_counter()
+print('Decimal: ', end-start)
+
+
+# a = 3.1415
+# b = "3.1415"
+# c = Decimal("3.1415")
+
+# print(sys.getsizeof(a))
+# print(sys.getsizeof(b))
+# print(sys.getsizeof(c))
+
+# print(format(a, '1.27f'))
+# print(format(float(b), '1.27f'))
+# print(format(float(round(float(b),4)), '1.27f'))
+# print(format(c, '1.27f'))
+
+
+# print(format(round(float(b),4), '1.27f'))
+# help(round)
 
 
 
@@ -30,6 +70,22 @@ import math
 
 
 
+
+
+# x= 2
+# x_dec = Decimal(2)
+
+# root_float = math.sqrt(x)
+# root_mixed = math.sqrt(x_dec)
+# root_dec = x_dec.sqrt()
+
+# # print(format(root_float, '1.27f'))
+# # print(format(root_mixed, '1.27f'))
+# # print(format(root_dec, '1.27f'))
+
+# print(format(root_float * root_float, '1.27f'))
+# print(format(root_mixed * root_mixed, '1.27f'))
+# print(format(root_dec * root_dec, '1.27f'))
 
 # x= Decimal(10)
 # y = Decimal(3)
