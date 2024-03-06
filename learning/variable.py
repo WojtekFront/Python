@@ -1,14 +1,72 @@
 
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+import decimal
+from decimal import Decimal
+import math
+
+
+# Decimal.getcontex().prec=0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# x= Decimal(10)
+# y = Decimal(3)
+# print(divmod(x,y))
+# # help(Decimal)
+# a = Decimal('1.5')
+# print(a.ln())
+# print(a.exp())
+# print(math.sqrt(a))
+
+# ------------------------------------------------------------------------------
+# import math 
+# x = 0.1 + 0.1 + 0.1
+# xy = float(format(x, '.30f'))
+# print(xy)
+# print(round(xy,3))
+
+# a= 10000.12423543245635645744563842384257828472448234
+# b= 10000.12742354324564435645744563842384257828472448234
+
+# print(a)
+# print(type(a))
+# print(math.isclose(a,b, rel_tol=1e-5, abs_tol=1e-5))
+
 # -----------------------------------------------------------------------------
-from fractions import Fraction
-import sys
+# print(format(0.1, '.30f'))
+
+# -----------------------------------------------------------------------------
+# from fractions import Fraction
+# import sys
 
 # print(Fraction(denominator = 2, numerator = 3))
 # print(Fraction('22/7'))
 
-a = Fraction(22,7)
-a = a.limit_denominator(4)
-print(float(a))
+# a = Fraction(22,7)
+# a = a.limit_denominator(4)
+# print(float(a))
 
 # b= 11
 # print(sys.getsizeof(a))
@@ -115,6 +173,6 @@ print(float(a))
 
 
 # Variables and memory references
-a = 10
+# a = 10
 # print(id(a))
 # print(hex(id(a)))
