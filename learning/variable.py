@@ -2,35 +2,86 @@
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-import decimal
-from decimal import Decimal
-import math, sys
-import time
+# Complex numbers
+import numpy  as np
+
+a = complex(1, 2)
+b = 3 +4j
+matrix_a = np.array([[2 + 3j, 1-2j], [0.5 + 1j, -2]])
+matrix_b = np.array([[1 - 1j, 2 + 2j], [3j, 4]])
 
 
-def run_float(n=1):
-    a = 3.1415
-    for i in range(n):
-       math.sqrt(a)
-
-def run_decimal(n=1):
-    a = Decimal('3.1415')
-    for i in range(n):
-        a.sqrt() 
-
-n = 5000000
-
-start = time.perf_counter()
-run_float(n)
-end = time.perf_counter()
-print('float: ', end-start)
 
 
-start = time.perf_counter()
-run_decimal(n)
-end = time.perf_counter()
-print('Decimal: ', end-start)
 
+
+# print(float(a))
+# print(float(b.real + b.imag))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# import decimal
+# from decimal import Decimal
+# import math, sys
+# import time
+
+
+# def run_float(n=1):
+#     a = 3.1415
+#     for i in range(n):
+#        math.sqrt(a)
+
+# def run_decimal(n=1):
+#     a = Decimal('3.1415')
+#     for i in range(n):
+#         a.sqrt() 
+
+# n = 5000000
+
+# start = time.perf_counter()
+# run_float(n)
+# end = time.perf_counter()
+# print('float: ', end-start)
+
+# start = time.perf_counter()
+# run_decimal(n)
+# end = time.perf_counter()
+# print('Decimal: ', end-start)
 
 # a = 3.1415
 # b = "3.1415"
@@ -45,32 +96,8 @@ print('Decimal: ', end-start)
 # print(format(float(round(float(b),4)), '1.27f'))
 # print(format(c, '1.27f'))
 
-
 # print(format(round(float(b),4), '1.27f'))
 # help(round)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # x= 2
 # x_dec = Decimal(2)
