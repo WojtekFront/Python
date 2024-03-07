@@ -3,6 +3,25 @@
 
 # ------------------------------------------------------------------------------
 # Complex numbers
+# import cmath
+
+# a = complex(1, 2)
+# a =0.1j
+# b = 1 + a
+# c = 1 + 0.1j
+# d = cmath.phase(c)
+# e = 1.01j
+
+# print(a)
+# print(1 + a)
+# print(b)
+# print(c)
+# print('d: {d}'.format(d))
+
+# print(a + a)
+# print(a * a)
+# print((a - a ) * a)
+
 # task x**2+4=0
 # import cmath
 # a = 1
@@ -31,7 +50,6 @@
 # from decimal import Decimal
 # import math, sys
 # import time
-
 
 # def run_float(n=1):
 #     a = 3.1415
