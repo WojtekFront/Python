@@ -3,56 +3,28 @@
 
 # ------------------------------------------------------------------------------
 # Complex numbers
-import numpy  as np
+# task x**2+4=0
+# import cmath
+# a = 1
+# b = 0
+# c = 4
 
-a = complex(1, 2)
-b = 3 +4j
-matrix_a = np.array([[2 + 3j, 1-2j], [0.5 + 1j, -2]])
-matrix_b = np.array([[1 - 1j, 2 + 2j], [3j, 4]])
+# delta = (b**2) - (4 * a * c)
 
+# root1 =(-b - cmath.sqrt(delta)) / (2 * a)
+# root2 = (-b + cmath.sqrt(delta)) / (2 * a)
+# print(delta)
+# print(f" Pierwiaski rwnania x^2 + 4 = 0 to {root1} + {root2} = 0")
 
+# import numpy  as np
 
-
-
+# a = complex(1, 2)
+# b = 3 +4j
+# matrix_a = np.array([[2 + 3j, 1-2j], [0.5 + 1j, -2]])
+# matrix_b = np.array([[1 - 1j, 2 + 2j], [3j, 4]])
 
 # print(float(a))
 # print(float(b.real + b.imag))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # ------------------------------------------------------------------------------
 # import decimal
