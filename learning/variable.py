@@ -1,9 +1,9 @@
 # ------------------------------------------------------------------------------
 # comparison
-from decimal import Decimal
-from fractions import Fraction
+# from decimal import Decimal
+# from fractions import Fraction
 
-print(True == Fraction(1, 1))
+# print(True == Fraction(1, 1))
 
 # table_x = [1, 2, 3, None, 4, 5, 6, 7]
 

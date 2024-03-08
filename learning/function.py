@@ -1,18 +1,37 @@
-import sys ,time, string
+# -----------------------------------------------------------------------------
 
-char_list = list(string.ascii_letters)
-char_tuples = tuple(string.ascii_letters)
-char_set = set(string.ascii_letters)
+a = b = c = 2 
+b = 5
+c = 3
+def test_variables(a, b=1, c=2):
+    print('a= {0}, b= {1}, c= {2}'.format(a, b, c))
+    print('a= {a}, b= {b}, c= {c}'.format(a=a, b=b, c=c))
 
-def membershiop_test(n, container):
-    for i in range(n):
-        if 'z' in container:
-            pass
+test_variables(a,b,c)
 
-start = time.perf_counter()
-membershiop_test(10000000, char_list)
-end = time.perf_counter()
-print("time for characters list: " + str(end - start))
+# -----------------------------------------------------------------------------
+# Keywords Aruments
+# def my_fubc(a=0, b=0, c=0, d=0 ):
+#     return a + b*10 + c*100 + d*1000
+
+# print(my_fubc(1, 2, d=3))
+
+# -----------------------------------------------------------------------------
+# import sys ,time, string
+
+# char_list = list(string.ascii_letters)
+# char_tuples = tuple(string.ascii_letters)
+# char_set = set(string.ascii_letters)
+
+# def membershiop_test(n, container):
+#     for i in range(n):
+#         if 'z' in container:
+#             pass
+
+# start = time.perf_counter()
+# membershiop_test(10000000, char_list)
+# end = time.perf_counter()
+# print("time for characters list: " + str(end - start))
 
 # start = time.perf_counter()
 # membershiop_test(10000000, char_tuples)
