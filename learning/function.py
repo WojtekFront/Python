@@ -2,19 +2,23 @@
 # -----------------------------------------------------------------------------
 # iterations
 a_tuple = (1,2,3,4,5,6,7,8,9)
-b_sets = {1,2,3}
-c_dictionaries = {'a': "text1",'b': "text2", 'c': "text3"}
+b_list = [1,2,3,4,5,6,7, 8, 9] 
+c_sets = {1,2,3,4,5,6,7,8,9, 10,11,12,13,14,15,16,17}
+d_dictionaries = {'a': "text1",'b': "text2", 'c': "text3"}
 
+for a,b in d_dictionaries.items():
+    print('key={0}, value={1}'.format(a,b))
 
+# for i in c_sets:
+#     print(i)
 
+# for d_key in d_dictionaries.values():
+#     print(d_key)
 
-# for c_key in c_dictionaries.values():
-#     print(c_key)
+# d_dictionaries = {'a': "text1", 'b': "text2", 'c': "text3"}
 
-# c_dictionaries = {'a': "text1", 'b': "text2", 'c': "text3"}
-
-# for c_key in c_dictionaries:
-#     formatted_text = "value is {0}".format(c_dictionaries[c_key])
+# for d_key in d_dictionaries:
+#     formatted_text = "value is {0}".format(d_dictionaries[d_key])
 #     print(formatted_text)
 
 # hmm = [a,b,c,d] =[1,2,3,4] # ugly
