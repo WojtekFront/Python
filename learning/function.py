@@ -1,13 +1,40 @@
+# -----------------------------------------------------------------------------
+# s1 = "abc"
+# s2 = "def"
+# s3 = [*s2, *s1]
 
+# print(s3)
+
+# s = "python"
+# a,b,c,d=s[0],s[1],s[2:-1],s[-1]
+
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+
+# l = [1,2,3,4,5,6,7,8,9,10]
+# a = l[0]
+# b = l[1:]
+
+# print(a)
+# print(b)
+# a, *b = l
+# print(l)
 # -----------------------------------------------------------------------------
 # iterations
-a_tuple = (1,2,3,4,5,6,7,8,9)
-b_list = [1,2,3,4,5,6,7, 8, 9] 
-c_sets = {1,2,3,4,5,6,7,8,9, 10,11,12,13,14,15,16,17}
-d_dictionaries = {'a': "text1",'b': "text2", 'c': "text3"}
 
-for a,b in d_dictionaries.items():
-    print('key={0}, value={1}'.format(a,b))
+# a,c,d,e, *b = [-10, 5, 2, 100]
+# print(a)
+# print(b)
+
+# a_tuple = (1,2,3,4,5,6,7,8,9)
+# b_list = [1,2,3,4,5,6,7, 8, 9] 
+# c_sets = {1,2,3,4,5,6,7,8,9, 10,11,12,13,14,15,16,17}
+# d_dictionaries = {'a': "text1",'b': "text2", 'c': "text3"}
+
+# for a,b in d_dictionaries.items():
+#     print('key={0}, value={1}'.format(a,b))
 
 # for i in c_sets:
 #     print(i)
