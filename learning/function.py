@@ -1,13 +1,40 @@
+
 # -----------------------------------------------------------------------------
+# iterations
+a_tuple = (1,2,3,4,5,6,7,8,9)
+b_sets = {1,2,3}
+c_dictionaries = {'a': "text1",'b': "text2", 'c': "text3"}
 
-a = b = c = 2 
-b = 5
-c = 3
-def test_variables(a, b=1, c=2):
-    print('a= {0}, b= {1}, c= {2}'.format(a, b, c))
-    print('a= {a}, b= {b}, c= {c}'.format(a=a, b=b, c=c))
 
-test_variables(a,b,c)
+
+
+# for c_key in c_dictionaries.values():
+#     print(c_key)
+
+# c_dictionaries = {'a': "text1", 'b': "text2", 'c': "text3"}
+
+# for c_key in c_dictionaries:
+#     formatted_text = "value is {0}".format(c_dictionaries[c_key])
+#     print(formatted_text)
+
+# hmm = [a,b,c,d] =[1,2,3,4] # ugly
+
+# for e in hmm:
+#     print(e)
+# print(type(a))
+# print(b)
+# print(c)
+# print(d)
+
+# -----------------------------------------------------------------------------
+# a = b = c = 2 
+# b = 5
+# c = 3
+# def test_variables(a, b=1, c=2):
+#     print('a= {0}, b= {1}, c= {2}'.format(a, b, c))
+#     print('a= {a}, b= {b}, c= {c}'.format(a=a, b=b, c=c))
+
+# test_variables(a,b,c)
 
 # -----------------------------------------------------------------------------
 # Keywords Aruments
