@@ -1,15 +1,32 @@
+# ------------------------------------------------------------------------------
+# comparison
+from decimal import Decimal
+from fractions import Fraction
+
+print(True == Fraction(1, 1))
+
+# table_x = [1, 2, 3, None, 4, 5, 6, 7]
+
+# if table_x:
+#     print(3 in table_x)
+# else:
+#     print("No table")
 
 # ------------------------------------------------------------------------------
 # boolean
 
-a = bool(1)
-b = True
-c = [""]
+# import string
 
+# a_digit = string.digits
+# print(a_digit)
 
+# a = bool(1)
+# b = True
+# c = [""]
+# d = None
 
-print()
-print(bool(c))
+# print()
+# print(bool(c))
 # print(False == 0)
 # print(int(a))
 # print(a == b)
