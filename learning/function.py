@@ -1,12 +1,47 @@
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# def calc_hi(*args, log_to_console = False):
+#     hi = int(bool(args)) and max(args)
+#     lo = min(args) if len(args) > 0 else 0
+#     avg = (hi + lo) / 2
+
+#     if log_to_console:
+#         avg ="high={0}, low={1}, avg={2}".format(hi,lo,avg)
+#         return avg
+#     return avg
+
+# avg = calc_hi(1,2,3,100)
+# print(avg)
+# avg2= calc_hi(1,2,3,100, log_to_console=True)
+# print(avg2)
+
+# def func(d=1,a=2, b=3):
+#     print(d + a + b)
+
+# def func1(**kwargs):
+#     print(" func1{0}".format(kwargs))
+
+# def func2(*args, **kwargs):
+#     print(" func2{0}".format(args))
+#     print(" func2{0}".format(kwargs))
+#     # print("tekst")
+
+# func(1,2,3)
+
+# func1(a=1, b=2, c=3)
+
+# func2(1,2,3,4,5,6,7,8,a=9,b=10)
+    
 
 # -----------------------------------------------------------------------------
-def func1(a, b, *args, d=20):
-    print(a)
-    print(b)
-    print(args)
-    print(d)
+# def func1(a, b, *args, d=20, e):
+#     print(a)
+#     print(b)
+#     print(args)
+#     print(d)
+#     print(e)
 
-func1(1,2,3,4, d=25)
+# func1(1,2,3,4, d=25, e=22)
 
 # -----------------------------------------------------------------------------
 # *args
