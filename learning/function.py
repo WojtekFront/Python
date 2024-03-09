@@ -1,21 +1,30 @@
 
 # -----------------------------------------------------------------------------
+def func1(a, b, *args, d=20):
+    print(a)
+    print(b)
+    print(args)
+    print(d)
+
+func1(1,2,3,4, d=25)
+
+# -----------------------------------------------------------------------------
 # *args
 
-list_func = [10,11,12]
-def new_args(*args):
-    if args:
-        print([*args])
+# list_func = [10,11,12]
+# def new_args(*args):
+#     if args:
+#         print([*args])
 
 
-# def new_args(a,b=10, *c):
-#     print(a)
-#     print(b)
-#     if c:
-#         print(c)
+# # def new_args(a,b=10, *c):
+# #     print(a)
+# #     print(b)
+# #     if c:
+# #         print(c)
 
-new_args(5,10,10,10,10,10,10)
-new_args(*list_func)
+# new_args(5,10,10,10,10,10,10)
+# new_args(*list_func)
 
 # -----------------------------------------------------------------------------
 # s1 = "abc"
