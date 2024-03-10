@@ -3,4 +3,4 @@ Second line will be displayed. 2
 Third line will be displayed. 3
 Fourth line will be displayed. 4
 Last line will be displayed. This line is longer than the first line. 5
-work_with_python\0_text_append\text.txt
+This is new Python line
