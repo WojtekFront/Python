@@ -5,12 +5,12 @@ app = Flask(__name__)
 api = Api(app)
 
 class HelloWorld(Resource):
-    def get(self):
+    def get(self, name):
         return {"data": "Hello World"}
-    def post(self):
-        return{"data": "new value"}
+    # def post(self):
+        # return{"data": "new value"}
     
-api.add_resource(HelloWorld,"/helloworld")
+api.add_resource(HelloWorld,"/helloworld/<string:name>/<int:test>")
 
 # @app.route("/get-user/<user_id>")
 # def get_user(user_id):
