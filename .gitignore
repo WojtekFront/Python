@@ -1,6 +1,6 @@
 $ cat .gitignore
 
-work_with_python/**
-newapi/**
-venvxxx/**
+
+
+
 
