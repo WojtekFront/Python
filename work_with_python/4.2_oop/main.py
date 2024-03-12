@@ -4,14 +4,7 @@ class Person:
     language = "Polish"
     age = 25
 
+wojtek = Person()
+setattr(wojtek, "work", "self")
 
-# print(getattr(Person, 'language'))
-# setattr(Person, "language","English")
-# setattr(Person,"name", "Johny")
-# print(Person.name)
-# delattr(Person, "age")
-# try:
-#     print(getattr(Person, 'age'))
-# except:
-#     print("Attribute does not exist")
-# print(Person.__dict__)
+print(wojtek.work)
