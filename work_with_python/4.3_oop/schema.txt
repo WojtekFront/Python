@@ -4,8 +4,9 @@ klasa pozwala na sprawdzanie, ile który kurier sprzedal:
 
 
 class Company:
+    id 
     company_name = "The best company"
-
+    company_nip = 
 
 class Employee:
     id = ""
@@ -19,9 +20,8 @@ class Client:
     id = ""
     client_company_name = ""
     client_history_balance_ = float
-    current
+    current_account =
     product =
-
 
 
 class Product:
