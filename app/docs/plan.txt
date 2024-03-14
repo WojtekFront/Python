@@ -1,0 +1,75 @@
+Zacznijmy od czwartku Tygodnia 1, gdzie zaczynamy prace nad klasą wczytującą pliki CSV:
+
+### Tydzień 1: Implementacja klasy wczytującej
+
+#### Czwartek - Rozpoczęcie prac nad klasą wczytującą
+
+**Małe kroki:**
+
+1.  **Projektowanie klasy**: Określ atrybuty i metody klasy wczytującej.
+2.  **Implementacja metody otwierającej plik**: Napisz kod do otwierania pliku CSV.
+3.  **Implementacja metody czytającej dane**: Napisz kod do czytania danych z otwartego pliku CSV.
+4.  **Testy jednostkowe dla metod**: Napisz testy sprawdzające poprawność działania metod otwierającej i czytającej.
+5.  **Dokumentacja i zapis w Git**: Dokumentuj zaimplementowane metody i zapisz zmiany w repozytorium Git.
+
+#### Piątek - Dalsza praca nad klasą wczytującą i testowanie
+
+**Małe kroki:**
+
+1.  **Implementacja obsługi błędów**: Dodaj obsługę wyjątków dla nieprawidłowych plików lub błędów odczytu.
+2.  **Rozszerzenie testów jednostkowych**: Uzupełnij testy o przypadki błędnych danych wejściowych.
+3.  **Optymalizacja wydajności**: Zoptymalizuj klasę pod kątem szybkiego przetwarzania danych.
+4.  **Code review**: Przejrzyj i ocen kod klasy wczytującej, szukając potencjalnych miejsc do poprawy.
+5.  **Dokumentacja i commit w Git**: Zaktualizuj dokumentację i wykonaj commit zmian.
+
+### Tydzień 2: Implementacja logiki konwersji
+
+#### Poniedziałek - Rozpoczęcie prac nad logiką konwersji
+
+**Małe kroki:**
+
+1.  **Definiowanie reguł konwersji**: Określ, jak dane z pliku CSV powinny być przekształcane.
+2.  **Projektowanie klasy konwersji**: Zaprojektuj klasę odpowiedzialną za konwersję danych.
+3.  **Podstawowa implementacja konwersji**: Zaimplementuj najprostsze przypadki konwersji.
+4.  **Testy jednostkowe dla logiki konwersji**: Stwórz testy dla zaimplementowanej logiki.
+5.  **Dokumentacja i commit w Git**: Dokumentuj postępy i zrób commit zmian.
+
+#### Wtorek - Rozwój logiki konwersji
+
+**Małe kroki:**
+
+1.  **Rozbudowa logiki konwersji**: Implementuj kolejne reguły konwersji.
+2.  **Aktualizacja testów jednostkowych**: Dodaj nowe testy dla rozszerzonej logiki.
+3.  **Testowanie konwersji**: Wykonaj testy z użyciem różnych danych wejściowych.
+4.  **Debugowanie i poprawki**: Znajdź i napraw błędy w logice konwersji.
+5.  **Dokumentacja i kolejny commit**: Zaktualizuj dokumentację i zapisz postępy w repozytorium.
+
+#### Środa - Dalszy rozwój i testowanie logiki konwersji
+
+**Małe kroki:**
+
+1.  **Kompleksowa implementacja konwersji**: Dopisz brakujące fragmenty logiki.
+2.  **Kompleksowe testy jednostkowe**: Upewnij się, że wszystkie aspekty konwersji są testowane.
+3.  **Optymalizacja logiki konwersji**: Sprawdź i popraw wydajność konwersji.
+4.  **Przeprowadź pełne testy integracyjne**: Testuj cały proces konwersji z różnymi danymi.
+5.  **Dokumentacja i commit**: Dokumentuj dokładnie cały proces i zrób commit.
+
+#### Czwartek - Implementacja klasy eksportującej
+
+**Małe kroki:**
+
+1.  **Projektowanie klasy eksportującej**: Określ, jak klasa będzie zapisywać przekonwertowane dane do nowego pliku CSV.
+2.  **Implementacja metody eksportującej**: Zaimplementuj metodę zapisującą dane do pliku CSV.
+3.  **Testy jednostkowe dla klasy eksportującej**: Stwórz testy sprawdzające poprawność eksportowanych danych.
+4.  **Integracja z pozostałymi komponentami**: Upewnij się, że wszystkie klasy współpracują ze sobą poprawnie.
+5.  **Dokumentacja i commit**: Dokumentuj zaimplementowaną funkcjonalność i zrób commit.
+
+#### Piątek - Integracja, testy końcowe i optymalizacja
+
+**Małe kroki:**
+
+1.  **Integracja wszystkich komponentów**: Połącz klasy w jeden spójny program.
+2.  **Testy końcowe**: Przetestuj cały program z różnymi zestawami danych.
+3.  **Debugowanie i optymalizacja**: Zidentyfikuj i napraw ewentualne problemy.
+4.  **Przegląd kodu**: Sprawdź kod pod kątem czytelności i zgodności ze standardami.
+5.  **Finalna dokumentacja i commit**: Zaktualizuj dokumentację i wykonaj ostatni commit przed zakończeniem projektu.

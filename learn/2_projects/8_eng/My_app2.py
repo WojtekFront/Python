@@ -30,6 +30,7 @@ class My_app:
             print()
 
 # Create an instance of My_app and run the quiz
-app = My_app(r"C:\Pyt\Python\sup\csv\english1.csv")
+# INCORRECT ADRESS
+app = My_app(r"..\Python\sup\csv\english1.csv")
 
 app.run_quiz()

@@ -1,0 +1,8 @@
+ryba = {
+    name: 'ryba',
+    version: '0.0.1',
+    dependencies: {
+      'ryba-core': '0.0.1'
+    }
+
+}
