@@ -1,17 +1,44 @@
 # -----------------------------------------------------------------------------
-def add_item(name, quantity, unit, grocery_list=[]):
-    grocery_list.append("{0} ({1} {2})".format(name, quantity, unit))
-    return grocery_list
+cache = {}
+def factorial(n, cache={}):
+    if n < 1:
+        return 1
+    elif n in cache:
+        return cache[n]
+    else:
+        print("calculating {0}!".format(n))
+        result = n * factorial(n-  1, cache = cache)
+        cache[n] = result
+        return result
 
-store1 = []
-store2 = []
-store1 = add_item('banas', 2, "kg")
-add_item('milk', 3, "litr")
-add_item('banas', 2, "kg")
-store2 =add_item('milk', 3, "litr")
 
-print(store1)
-print(store2)
+
+# def factorial(n):
+#     if n < 1:
+#         return 1
+#     else:
+#         print("calculating {0}".format(n))
+#         return factorial(n-  1)
+    
+factorial(2, cache) 
+print(cache)
+
+
+
+# -----------------------------------------------------------------------------
+# def add_item(name, quantity, unit, grocery_list=[]):
+#     grocery_list.append("{0} ({1} {2})".format(name, quantity, unit))
+#     return grocery_list
+
+# store1 = []
+# store2 = []
+# store1 = add_item('banas', 2, "kg")
+# add_item('milk', 3, "litr")
+# add_item('banas', 2, "kg")
+# store2 =add_item('milk', 3, "litr")
+
+# print(store1)
+# print(store2)
 
 # -----------------------------------------------------------------------------
 # my_list =[1,2,3]
