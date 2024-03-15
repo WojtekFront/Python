@@ -1,4 +1,27 @@
 # -----------------------------------------------------------------------------
+def add_item(name, quantity, unit, grocery_list=[]):
+    grocery_list.append("{0} ({1} {2})".format(name, quantity, unit))
+    return grocery_list
+
+store1 = []
+store2 = []
+store1 = add_item('banas', 2, "kg")
+add_item('milk', 3, "litr")
+add_item('banas', 2, "kg")
+store2 =add_item('milk', 3, "litr")
+
+print(store1)
+print(store2)
+
+# -----------------------------------------------------------------------------
+# my_list =[1,2,3]
+# def func(a=my_list):
+#     print(a)
+# # func(['a','b'])
+# my_list.append(0)
+
+# func()
+
 # -----------------------------------------------------------------------------
 # def calc_hi(*args, log_to_console = False):
 #     hi = int(bool(args)) and max(args)
