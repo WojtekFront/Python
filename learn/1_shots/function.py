@@ -1,6 +1,11 @@
 # -----------------------------------------------------------------------------
 cache = {}
 def factorial(n, cache={}):
+    """opis def
+    druga linia 
+    trzecia linia
+    czwarta linia
+    """
     if n < 1:
         return 1
     elif n in cache:
@@ -11,7 +16,7 @@ def factorial(n, cache={}):
         cache[n] = result
         return result
 
-
+print(factorial.__doc__)
 
 # def factorial(n):
 #     if n < 1:
@@ -20,8 +25,8 @@ def factorial(n, cache={}):
 #         print("calculating {0}".format(n))
 #         return factorial(n-  1)
     
-factorial(2, cache) 
-print(cache)
+# factorial(2, cache) 
+# print(cache)
 
 
 
