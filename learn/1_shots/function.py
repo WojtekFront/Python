@@ -1,12 +1,33 @@
 # -----------------------------------------------------------------------------
-def learn(a: str, b: str)->str:
-    "describe"
-    return a + b
-print(learn(False,2))
-learn(1,2)
-class Test:
-    "123"
-print(Test.__doc__)
+# lambda x: x**2
+new_lambda = lambda x: 5 + x
+# print(new_lambda(2))
+
+def apply_lambda(x,fn):
+    return fn(x)
+
+print(apply_lambda(4,new_lambda))
+
+
+
+
+# -----------------------------------------------------------------------------
+# def new_func(a: 'value a')-> 'output from annotation':
+#     """Descriptions for new functions"""
+#     print(a)
+
+# print(new_func.__doc__)
+# print(new_func.__annotations__)
+
+# -----------------------------------------------------------------------------
+# def learn(a: str, b: str)->str:
+#     "describe"
+#     return a + b
+# print(learn(False,2))
+# learn(1,2)
+# class Test:
+#     """123"""
+#     print(Test.__doc__)
 
 # -----------------------------------------------------------------------------
 # cache = {}
