@@ -1,15 +1,17 @@
 # -----------------------------------------------------------------------------
+def lambda_func(x, y = lambda x: x*x):
+    print(y(x))
+
+lambda_func(7)
+
 # lambda x: x**2
-new_lambda = lambda x: 5 + x
+# new_lambda = lambda x:  x
 # print(new_lambda(2))
 
-def apply_lambda(x,fn):
-    return fn(x)
+# def apply_lambda(x,fn):
+#     return fn(x)
 
-print(apply_lambda(4,new_lambda))
-
-
-
+# print(apply_lambda(4,new_lambda))
 
 # -----------------------------------------------------------------------------
 # def new_func(a: 'value a')-> 'output from annotation':
