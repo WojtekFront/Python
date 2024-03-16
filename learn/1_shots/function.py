@@ -1,8 +1,15 @@
 # -----------------------------------------------------------------------------
-def lambda_func(x, y = lambda x: x*x):
-    print(y(x))
+# lambda function
+def apply_func(fn, *args, **kwargs):
+    return fn(*args, **kwargs)
 
-lambda_func(7)
+
+
+
+# def lambda_func(x, y = lambda x: x*x):
+#     print(y(x))
+
+# lambda_func(7)
 
 # lambda x: x**2
 # new_lambda = lambda x:  x
