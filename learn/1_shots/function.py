@@ -1,22 +1,32 @@
 # -----------------------------------------------------------------------------
-cache = {}
-def factorial(n, cache={}):
-    """opis def
-    druga linia 
-    trzecia linia
-    czwarta linia
-    """
-    if n < 1:
-        return 1
-    elif n in cache:
-        return cache[n]
-    else:
-        print("calculating {0}!".format(n))
-        result = n * factorial(n-  1, cache = cache)
-        cache[n] = result
-        return result
+def learn(a: str, b: str)->str:
+    "describe"
+    return a + b
+print(learn(False,2))
+learn(1,2)
+class Test:
+    "123"
+print(Test.__doc__)
 
-print(factorial.__doc__)
+# -----------------------------------------------------------------------------
+# cache = {}
+# def factorial(n, cache={}):
+#     """opis def
+#     druga linia 
+#     trzecia linia
+#     czwarta linia
+#     """
+#     if n < 1:
+#         return 1
+#     elif n in cache:
+#         return cache[n]
+#     else:
+#         print("calculating {0}!".format(n))
+#         result = n * factorial(n-  1, cache = cache)
+#         cache[n] = result
+#         return result
+
+# print(factorial.__doc__)
 
 # def factorial(n):
 #     if n < 1:
