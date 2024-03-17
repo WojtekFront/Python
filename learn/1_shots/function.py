@@ -1,9 +1,10 @@
 # -----------------------------------------------------------------------------
-# lambda function
-def apply_func(fn, *args, **kwargs):
-    return fn(*args, **kwargs)
+# # lambda function
+# def apply_func(fn, *args, **kwargs):
+#     return fn(*args, **kwargs)
 
-
+# sq = lambda x: x*2
+# print(apply_func(sq, 3))
 
 
 # def lambda_func(x, y = lambda x: x*x):
