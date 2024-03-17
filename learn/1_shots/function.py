@@ -1,4 +1,32 @@
 # -----------------------------------------------------------------------------
+l = ["John", "Mary", "Alice", "Bob", "Unknown"]
+print(sorted(l, key =lambda x: x[-1]))
+# print(sorted(l))
+
+
+
+# -----------------------------------------------------------------------------
+# def dist_sq(x):
+#     return (x.real)**2 + (x.imag)**2
+
+# print(dist_sq(1+2j))
+
+# d  = {"abc": 200, "de": 100, "g": 500, "f": 1000}
+
+# print (sorted(d, key= lambda e: d[e]))
+
+# print(d)
+# for e in sorted(d.values()):
+#     print(e)
+
+# l = [221,2,134,51,12,314,1321]
+# print(l)
+# # l = sorted(l)
+# sorted(l, key=lambda s: s.upper())
+
+# print(l)
+
+# -----------------------------------------------------------------------------
 # # lambda function
 # def apply_func(fn, *args, **kwargs):
 #     return fn(*args, **kwargs)
