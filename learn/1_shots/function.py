@@ -1,9 +1,37 @@
 # -----------------------------------------------------------------------------
-l = ["John", "Mary", "Alice", "Bob", "Unknown"]
-print(sorted(l, key =lambda x: x[-1]))
+def my_func(a: "value a", 
+            b: "value b" =10, 
+            c: "value c"=20, 
+            *args: "value *args", 
+            kw1: "value kw1", 
+            kw2: "value kw2"=100, 
+            kw3: "value kw3"=200, 
+            **kw)->"value function":
+    """ 
+    description my_func
+    Parameters my_func
+    """
+    i =10
+    j =20
+# print(my_func.__doc__)
+# print("--------------------------------")
+# print(my_func.__annotations__)
+# print("--------------------------------")
+my_func.short_description="my_func new description function"
+# print(my_func.short_description)
+
+print(dir(my_func))
+
+# -----------------------------------------------------------------------------
+# import random
+# print(random.random)
+# l = [221,2,134,51,12,314,1321]
+# print(sorted(l, key = lambda x:random.random()))
+
+# -----------------------------------------------------------------------------
+# l = ["John", "Mary", "Alice", "Bob", "Unknown"]
+# print(sorted(l, key =lambda x: x[-1]))
 # print(sorted(l))
-
-
 
 # -----------------------------------------------------------------------------
 # def dist_sq(x):
