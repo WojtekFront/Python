@@ -1,26 +1,72 @@
 # -----------------------------------------------------------------------------
-def my_func(a: "value a", 
-            b: "value b" =10, 
-            c: "value c"=20, 
-            *args: "value *args", 
-            kw1: "value kw1", 
-            kw2: "value kw2"=100, 
-            kw3: "value kw3"=200, 
-            **kw)->"value function":
-    """ 
-    description my_func
-    Parameters my_func
-    """
-    i =10
-    j =20
+# callable
+# print(dir(list))
+# print(callable(print))
+s = [1, 2, 3, 4, 5]
+# print(callable(s.append(1)))
+# from decimal import Decimal
+# print(callable(Decimal))
+
+class MyClass:
+    def __init__(self, x=0):
+        # print("initializing...")
+        self.counter = x
+
+    def __call__(self, x=1):
+        print("updating counter")
+        self.counter += x
+    def example(a=2):
+        print(str(a))
+
+
+b = MyClass(1)
+
+b.example(7)
+# print(b.__call__(2))
+
+    
+# print(callable(MyClass))
+# print(callable())
+# print(callable())
+
+
+# -----------------------------------------------------------------------------
+# import inspect
+# from inspect import isfunction, ismethod, isroutine
+# import math
+# for param in inspect.signature(divmod).parameters.values():
+#     print(param.kind)
+
+# a= 10
+# class My_class:
+    # def my_def(self):
+    #     print(a)
+#     j =20
+# print(isroutine(My_class))
+# print(inspect.getsource(My_class))
+
+# -----------------------------------------------------------------------------
+# def my_func(a: "value a", 
+#             b: "value b" =10, 
+#             c: "value c"=20, 
+#             *args: "value *args", 
+#             kw1: "value kw1", 
+#             kw2: "value kw2"=100, 
+#             kw3: "value kw3"=200, 
+#             **kw)->"value function":
+#     """ 
+#     description my_func
+#     Parameters my_func
+#     """
+#     i =10
 # print(my_func.__doc__)
 # print("--------------------------------")
 # print(my_func.__annotations__)
 # print("--------------------------------")
-my_func.short_description="my_func new description function"
+# my_func.short_description="my_func new description function"
 # print(my_func.short_description)
 
-print(dir(my_func))
+# print(dir(my_func))
 
 # -----------------------------------------------------------------------------
 # import random
