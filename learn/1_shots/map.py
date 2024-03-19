@@ -1,6 +1,36 @@
 list1 = [1,2,3]
-list2 = [4,5,6]
-list3 = [7,8,9]
-new_list = list(zip(list1,list2,list3))
+list2 = range(100)
+list3 = [4,5,6,7,8,9,10]
+list4 = [7,8,9,10,11,12,13,14]
 
-print(new_list)
+
+newest_list = list(map(lambda x,y: x+y, list1, list3))
+print(newest_list)
+newest_list = [x+y for x,y in zip(list1, list3)]
+print(newest_list)
+newest_list= list(filter(lambda x: x%2==0, map(lambda x, y: x+y, list1, list3)))
+
+
+# def sq(x):
+#     return x**2
+
+# result = map(sq, list1)
+
+# for x in result:
+#     print(x)
+
+
+
+
+# filter_list = list(filter(lambda x: x%2==1, list4))
+# print(filter_list)
+# filter_list2 = [x for x in list4 if x%2 ==1]
+# filter_list2 = [x*5 for x in list4 if x%2 ==1]
+# print(filter_list2)
+
+# new_list = list(map(sq, list3))
+# print(new_list)
+# zip_list = list(zip(list3, list4))
+# print(zip_list)
+
+# new_list = list(zip(list1,list2,list3))
