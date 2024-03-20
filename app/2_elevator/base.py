@@ -27,7 +27,7 @@ class Elevator:
     def test_order_generate_input(self):
         '''Testing elements
         send order_generate_input'''
-        how_many_random = 10
+        how_many_random = 20
         for i in range(how_many_random):
             self.test_generate_random_level() 
 
@@ -46,12 +46,34 @@ class Elevator:
         if not new_random_level:
             self.send_error("test_add_to_list 1. Error value {0}: ".format(new_random_level))
         elif new_random_level > self.current_level:
-            self.list_up.append(new_random_level)
+            self.add_element_to_list_up(new_random_level)
         elif new_random_level < self.current_level:
-            self.list_down.append(new_random_level)
+            self.add_element_to_list_down(new_random_level)
         else:
             if new_random_level != self.current_level:
                 self.send_error("test_add_to_list 2. Unpredicted value in list: {0}".format(new_random_level)) # Error to log    
+    def add_element_to_list_up(self, new_random_level):
+        if not self.list_up:
+            print("lista pusta")
+            self.list_up.append(new_random_level)
+        elif new_random_level not in self.list_up:
+            self.list_up.append(new_random_level)
+            self.list_up.sort()
+        
+
+    def add_element_to_list_down(self, new_random_level):
+        if not self.list_down:
+            print("lista pusta")
+            self.list_down.append(new_random_level)
+        elif new_random_level not in self.list_down:
+            self.list_down.append(new_random_level)
+            self.list_down.sort(reverse = True)
+            # self.list_down = list_down.sort()
+            # print(self.list_down)
+            # print(list_down)
+            # if (self.list_down).lenght() > 2:
+            #     print(self.list_down)
+                
 
     def send_error(self, message):
         ''' information to log'''
