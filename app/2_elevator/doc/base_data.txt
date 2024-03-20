@@ -1,0 +1,25 @@
+Winda:
+1. Możliwe stany:
+0 - wyłączona,
+1 - techniczne zatrzymanie: serwis, awaria, konieczne prace serwisowe, czujnik dymu
+2 - czeka,
+3 - jedzie w dół,
+4 - zatrzymała podczas jezdy w dół,
+5 - jedzie w górę,
+6 - zatrzymała w trakcie jazdy w górę,
+
+
+Drzwi w windzie:
+True - zamknięte,
+False - otwarte,
+
+
+scenariusz: winda ma 10 pięter
+- gdy jedzie w górę to dodają się tylko wartości większe od aktualnej oraz których nie ma na liście,
+- gdy jedzie w dół można dodawać tylko wartości mniejsze od aktualnej oraz których nie ma na lisćie,
+-*winda się przemieszcza i stan aktualny można dodawać podcza jazdy
+- winda może jechać tylko gdy drzwi są zamknięte
+- winda może zgłaszać awarię: odnotuj datę i wyślij wiadomość
+- sprawdzanie inputów !!!
+# ----------------------------------------------------------------
+1.
