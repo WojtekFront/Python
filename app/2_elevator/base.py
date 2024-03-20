@@ -49,7 +49,7 @@ class Elevator:
                 self.current_list = self.list_up
             elif self.current_level > new_random_level:
                 self.current_list = self.list_down
-
+        
         if not new_random_level:
             self.send_error("test_add_to_list 1. Error value {0}: ".format(new_random_level))
         elif new_random_level > self.current_level:
@@ -79,7 +79,6 @@ class Elevator:
     def send_error(self, message):
         ''' information to log'''
         return 
-
 
 # test_current_level = random.choice(Elevator.numbers_of_floors)
 test_current_level = 5
