@@ -13,7 +13,7 @@ class Elevator:
 
     def __init__(self, elevator_model: "write model", elevator_id: "write id: xxxxx", elevator_move_state: "check state" =2, elevator_door_state = True, elevator_input_state: "actually always ok" = 0, 
                  current_level=0,
-                 current_list= 0, list_up = [], list_down = []):
+                 current_list= None, list_up = [], list_down = []):
         self.elevator_model = elevator_model
         self.elevator_id = elevator_id
         self.elevator_move_state = elevator_move_state
@@ -37,12 +37,19 @@ class Elevator:
         First will put to list up
         '''
         new_random_level = random.choice(self.numbers_of_floors)
-
-        # print(new_random_level)
         return self.test_add_to_list(new_random_level)
-        # print("--------------------------------")        
-    
+
     def test_add_to_list(self, new_random_level): 
+        ''' If list is empty then check first imput
+            if first imput is biger then current level then go up and then firs print list up.
+            if first element is biger then current level then go down and then firs print list down'''
+        if self.current_list is None:
+            print(new_random_level)
+            if self.current_level < new_random_level:
+                self.current_list = self.list_up
+            elif self.current_level > new_random_level:
+                self.current_list = self.list_down
+
         if not new_random_level:
             self.send_error("test_add_to_list 1. Error value {0}: ".format(new_random_level))
         elif new_random_level > self.current_level:
@@ -52,14 +59,14 @@ class Elevator:
         else:
             if new_random_level != self.current_level:
                 self.send_error("test_add_to_list 2. Unpredicted value in list: {0}".format(new_random_level)) # Error to log    
+
     def add_element_to_list_up(self, new_random_level):
         if not self.list_up:
             print("lista pusta")
             self.list_up.append(new_random_level)
         elif new_random_level not in self.list_up:
             self.list_up.append(new_random_level)
-            self.list_up.sort()
-        
+            self.list_up.sort()        
 
     def add_element_to_list_down(self, new_random_level):
         if not self.list_down:
@@ -67,20 +74,14 @@ class Elevator:
             self.list_down.append(new_random_level)
         elif new_random_level not in self.list_down:
             self.list_down.append(new_random_level)
-            self.list_down.sort(reverse = True)
-            # self.list_down = list_down.sort()
-            # print(self.list_down)
-            # print(list_down)
-            # if (self.list_down).lenght() > 2:
-            #     print(self.list_down)
-                
+            self.list_down.sort(reverse = True)            
 
     def send_error(self, message):
         ''' information to log'''
         return 
 
 
-test_current_level = random.choice(Elevator.numbers_of_floors)
+# test_current_level = random.choice(Elevator.numbers_of_floors)
 test_current_level = 5
 first_elevator = Elevator("Test_model","00001",current_level=test_current_level)
 
@@ -88,12 +89,7 @@ first_elevator.test_order_generate_input()
 print("Aktualne piętro: {0}".format(first_elevator.current_level))
 print("Lista w górę:    {0}".format(first_elevator.list_up))
 print("Lista w dół:     {0}".format(first_elevator.list_down))
-# first_elevator.generate_random_level()
-
-# print(first_elevator.elevator_move_state)
-# print(random.choice(first_elevator.numbers_of_floors))
-
-
+print("kierunek jazdy:{0}".format(first_elevator.current_list))
 
 
     
