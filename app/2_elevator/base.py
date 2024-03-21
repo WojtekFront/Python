@@ -14,8 +14,7 @@ class Elevator:
     }
 
     def __init__(self, elevator_model: "write model", elevator_id: "write id: xxxxx", elevator_move_state: "check state" =2, elevator_door_state = True, elevator_input_state: "actually always ok" = 0, 
-                 current_level=0,
-                 current_list= None, list_up = [], list_down = []):
+                 current_level=0, current_list= None, list_up = [], list_down = []):
         self.elevator_model = elevator_model # name model
         self.elevator_id = elevator_id # elevator id
         self.elevator_move_state = elevator_move_state # check state usually = 2(checking for order)
@@ -46,7 +45,7 @@ class Elevator:
             if first imput is biger then current level then go up and then firs print list up.
             if first element is biger then current level then go down and then firs print list down'''
         if self.current_list is None:
-            print(new_random_level)
+            # print(new_random_level)
             if self.current_level < new_random_level:
                 self.current_list = 1
             elif self.current_level > new_random_level:
@@ -66,7 +65,7 @@ class Elevator:
 # down ------------------------------
     def add_element_to_list_up(self, new_random_level):
         if not self.list_up:
-            print("lista pusta")
+            # print("lista pusta")
             self.list_up.append(new_random_level)
         elif new_random_level not in self.list_up:
             self.list_up.append(new_random_level)
@@ -74,7 +73,7 @@ class Elevator:
 
     def add_element_to_list_down(self, new_random_level):
         if not self.list_down:
-            print("lista pusta")
+            # print("lista pusta")
             self.list_down.append(new_random_level)
         elif new_random_level not in self.list_down:
             self.list_down.append(new_random_level)
@@ -93,8 +92,8 @@ class Elevator:
         ''' information to log'''
         return 
 
-# test_current_level = random.choice(Elevator.numbers_of_floors)
-test_current_level = 5
+test_current_level = random.choice(Elevator.numbers_of_floors)
+# test_current_level = 5
 first_elevator = Elevator("Test_model","00001",current_level=test_current_level)
 
 first_elevator.test_order_generate_input()
@@ -103,7 +102,6 @@ first_elevator.test_drive()
 print("Aktualne piętro: {0}".format(first_elevator.current_level))
 print("Lista w górę:    {0}".format(first_elevator.list_up))
 print("Lista w dół:     {0}".format(first_elevator.list_down))
-print("kierunek jazdy:{0}".format(first_elevator.current_list))
 
 
     
