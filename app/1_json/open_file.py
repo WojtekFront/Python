@@ -78,28 +78,33 @@ class Open_csv(Error_message):
     def connect_backup_name(self):
         self.backup_name_file = datetime.datetime.now().strftime("%y%m%d_%H%M%S_") + self.backup_name_file + ".txt"
 
+
+
     def create_backup_file(self):
-
-        # !!! temporay name !!!
         self.backup_name_file = "temporary.txt"
-        new_backup_file = open(self.backup_name_file,"w")
-        
-        # !!! correct name !!!
-        # new_backup_file = open(self.backup_name_file,"x")
-        
-        new_backup_file.write(str(self.new_text_json))
-        new_backup_file.close()
+        with open(self.backup_name_file, "w") as new_backup_file:
+            new_backup_file.write(json.dumps(self.new_text_json, indent=4))
+            # Rozpoczęcie drukowania schematu z głównego obiektu JSON
+            self.printed_paths = set()  # Utworzenie zbioru do śledzenia już wydrukowanych ścieżek
+            self.print_json_field_types(self.new_text_json)
 
-    def test_analyze_json(self):
-        print("open")
-        data= self.new_text_json
-        if isinstance(data, list): 
-            data = data[0]
-
-        print("Pola i ich format w pliku JSON")
-        for key, value in data.items():
-            print(f"{key}: {type(value).__name__}")
-
+    def print_json_field_types(self, data, parent_key=""):
+        if isinstance(data, dict):
+            for key, value in data.items():
+                full_key = f"{parent_key}.{key}" if parent_key else key
+                if full_key not in self.printed_paths:  # Sprawdzenie, czy ścieżka została już wydrukowana
+                    print(f"{full_key}: {type(value).__name__}")
+                    self.printed_paths.add(full_key)  # Dodanie ścieżki do zbioru
+                    self.print_json_field_types(value, full_key)
+        elif isinstance(data, list):
+            if data:  # Sprawdzenie, czy lista nie jest pusta
+                # Analiza tylko pierwszego elementu, zakładając jednolitość listy
+                self.print_json_field_types(data[0], parent_key)
+        else:
+            # Wartości końcowe nie wymagają rekurencyjnego wywołania
+            if parent_key not in self.printed_paths:
+                print(f"{parent_key}: {type(data).__name__}")
+                self.printed_paths.add(parent_key)
 
 
 try:
@@ -112,7 +117,7 @@ new_file = Open_csv(input_values)
 
 
 new_file.open_file()   
-new_file.test_analyze_json()
+# new_file.test_analyze_json()
 # new_file.collect_errors_message()
 
 
