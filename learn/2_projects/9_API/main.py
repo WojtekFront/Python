@@ -19,11 +19,16 @@ except requests.exceptions.HTTPError as e:
     exit(0)
 
 if response.status_code == 200:
-    # print(response)
+    # collect data
     temp_in_celsius = kelvin_to_celsius(data['main']['temp'])
     feels_like_celsius = kelvin_to_celsius(data['main']['feels_like'])
-    print("temperatura dzisiaj:    {0}".format(temp_in_celsius))
-    print("odczuwalna temperatura: {0}".format(feels_like_celsius))
+    sunrise_time = dt.datetime.fromtimestamp(data['sys']['sunrise'])
+
+    print(data)
+    # response data
+    print("temperatura dzisiaj:      {0} C".format(temp_in_celsius))
+    print("odczuwalna temperatura:   {0} C".format(feels_like_celsius))
+    print("wschód słońca o godzinie :{0}".format(sunrise_time))
 
 
 
