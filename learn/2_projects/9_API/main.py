@@ -1,18 +1,30 @@
 import datetime as dt
+import json
 import requests # pip install requests
-import password 
+import password # external file with password
 
-base_url = 'http://api.openweathermap.org/data/2.5/forecast?'
+api_key = password.api_key
+city_name = "Szczecin"
 
-city = "Szczecin"
+def kelvin_to_celsius(kelvin):
+    celsius = kelvin - 273.15
+    return int(celsius)
 
 try:
-    url = base_url + "appid=" + password.api_key + "&q=" + city
-    response = requests.get(url).json()
-    print(response)
+    base_url = f'http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={api_key}'
+    response = requests.get(base_url)
+    data = response.json()
 except requests.exceptions.HTTPError as e:
     print("wrong connectrion result: {0}".format(e))
     exit(0)
+
+if response.status_code == 200:
+    # print(response)
+    temp_in_celsius = kelvin_to_celsius(data['main']['temp'])
+    feels_like_celsius = kelvin_to_celsius(data['main']['feels_like'])
+    print("temperatura dzisiaj:    {0}".format(temp_in_celsius))
+    print("odczuwalna temperatura: {0}".format(feels_like_celsius))
+
 
 
 
