@@ -1,13 +1,25 @@
 # -----------------------------------------------------------------------------
-def long_func(a, b, c):
-    print(a + b + c)
 
-def reduc_func(b,c, *args):
-    return long_func(10, b,c)
 
-lambda_reduc = lambda c: reduc_func(20, c)
-# reduc_func(20,30)
-lambda_reduc(100)
+
+
+
+
+
+
+
+
+
+
+# def long_func(a, b, c):
+#     print(a + b + c)
+
+# def reduc_func(b,c, *args):
+#     return long_func(10, b,c)
+
+# lambda_reduc = lambda c: reduc_func(20, c)
+
+# lambda_reduc(100)
 
 # -----------------------------------------------------------------------------
 # callable
