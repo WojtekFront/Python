@@ -1,34 +1,41 @@
 # -----------------------------------------------------------------------------
+def long_func(a, b, c):
+    print(a + b + c)
+
+def reduc_func(b,c, *args):
+    return long_func(10, b,c)
+
+reduc_func(20,30)
+
+
+# -----------------------------------------------------------------------------
 # callable
 # print(dir(list))
 # print(callable(print))
-s = [1, 2, 3, 4, 5]
+# s = [1, 2, 3, 4, 5]
 # print(callable(s.append(1)))
 # from decimal import Decimal
 # print(callable(Decimal))
 
-class MyClass:
-    def __init__(self, x=0):
+# class MyClass:
+#     def __init__(self, x=0):
         # print("initializing...")
-        self.counter = x
+#         self.counter = x
 
-    def __call__(self, x=1):
-        print("updating counter")
-        self.counter += x
-    def example(a=2):
-        print(str(a))
+#     def __call__(self, x=1):
+#         print("updating counter")
+#         self.counter += x
+#     def example(a=2):
+#         print(str(a))
 
+# b = MyClass(1)
 
-b = MyClass(1)
-
-b.example(7)
+# b.example(7)
 # print(b.__call__(2))
 
-    
 # print(callable(MyClass))
 # print(callable())
 # print(callable())
-
 
 # -----------------------------------------------------------------------------
 # import inspect
@@ -362,14 +369,6 @@ b.example(7)
 # end = time.perf_counter()
 # print("time for characters set: " + str(end - start))
 
-
-
-
-
-
-
-
-
 # -----------------------------------------------------------------------------
 # def compare_using_equals(n):
 #     a = "a long string that is not interned" * 200
@@ -384,7 +383,6 @@ b.example(7)
 #     for i in  range(n):
 #         if a == b:
 #             pass
-
 
 # def compare_using_interning2(n):
 #     a = sys.intern("a long string that is not interned" * 1000)
@@ -411,8 +409,6 @@ b.example(7)
 
 # print(end - start)
 
-
-
 # a = sys.intern("hello world")
 # b  = sys.intern('hello world')
 
@@ -435,7 +431,6 @@ b.example(7)
 # f = select_function(2)
 # f is cube
 # f(2)
-
 
 # def exec_function(fn,n):
 #     return fn(n) 
