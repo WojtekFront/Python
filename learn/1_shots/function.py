@@ -5,8 +5,9 @@ def long_func(a, b, c):
 def reduc_func(b,c, *args):
     return long_func(10, b,c)
 
-reduc_func(20,30)
-
+lambda_reduc = lambda c: reduc_func(20, c)
+# reduc_func(20,30)
+lambda_reduc(100)
 
 # -----------------------------------------------------------------------------
 # callable
