@@ -1,33 +1,33 @@
-class Classes:
-    def __init__(self, width, height):
-        self._width = width
-        self._height = height
+# class Classes:
+#     def __init__(self, width, height):
+#         self._width = width
+#         self._height = height
 
-    @property
-    def width(self):
-        print("long text width")
-        return self._width
+#     @property
+#     def width(self):
+#         print("long text width")
+#         return self._width
     
-    @width.setter
-    def width(self, width):
-        if width <= 0:
-            print("Value is same as before")
-            raise ValueError('Width must be positive')
-        else: 
-            self._width = width
+#     @width.setter
+#     def width(self, width):
+#         if width <= 0:
+#             print("Value is same as before")
+#             raise ValueError('Width must be positive')
+#         else: 
+#             self._width = width
     
-    @property
-    def height(self):
-        print("long text height")
-        return self._height
+#     @property
+#     def height(self):
+#         print("long text height")
+#         return self._height
     
-    @property
-    def height(self, height):
-        if height <= 0:
-            print("Value is same as before")
-            raise ValueError('Height must be positive')
-        else: 
-            self._height = height
+#     @property
+#     def height(self, height):
+#         if height <= 0:
+#             print("Value is same as before")
+#             raise ValueError('Height must be positive')
+#         else: 
+#             self._height = height
     
     # def get_width(self):
     #     return self._width
