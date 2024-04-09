@@ -24,11 +24,10 @@ cars_model = random.choice(cars_options[cars_brand])
 cars_color = random.choice([
     "Beżowy", "Biały", "Bordowy", "Brąz", "Brązowy", "Brzoskwiniowy", "Burgund", 
     "Cyjan", "Czarny", "Fioletowy", "Fiołkowy", "Granatowy", "Indygo", "Lawendowy", 
-    "Limonkowy", "Miętowy", "Morski", "Niebieski", "Oliwkowy", "Piaskowy", 
+    "Limonkowy", "Miętowy", "Morski", "Niebieski", "Oliwkowy", "Piaskowy",  
     "Pomarańczowy", "Różowy", "Srebrny", "Szary", "Turkusowy", "Zielony", 
     "Złoty", "Żółty"
 ])
-
 
 cars_brand2 = random.choice(list(cars_options.keys()))
 cars_model1 = random.choice(cars_options[cars_brand])     
@@ -39,10 +38,13 @@ cars_data = 2000 + random.randrange(1, 24)
 connection, cursor = connect_to_db()
  
 try:
-    
+
     cursor.execute("""
-        INSERT INTO cars(brand, model, year) VALUES(%s, %s, %s)""",(cars_brand, cars_model, cars_data)           
+        INSERT INTO cars(brand, model, year, color) VALUES(%s, %s, %s, %s)""",(cars_brand, cars_model, cars_data, cars_color)           
         )
+    # cursor.execute("""
+    #     INSERT INTO cars(brand, model, year) VALUES(%s, %s, %s)""",(cars_brand, cars_model, cars_data)           
+    #     )
     cursor.execute("""
         SELECT * FROM cars
         """)
