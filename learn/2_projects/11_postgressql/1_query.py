@@ -29,16 +29,16 @@ cars_color = random.choice([
     "Złoty", "Żółty"
 ])
 
-cars_brand2 = random.choice(list(cars_options.keys()))
-cars_model1 = random.choice(cars_options[cars_brand])     
-
+cars_price = 1000 * random.randrange(20, 200)
+cars_milage = 10000 * random.randrange(5, 400)
 cars_data = 2000 + random.randrange(1, 24)
+
+
 
 """ open connection"""
 connection, cursor = connect_to_db()
  
 try:
-
     cursor.execute("""
         INSERT INTO cars(brand, model, year, color) VALUES(%s, %s, %s, %s)""",(cars_brand, cars_model, cars_data, cars_color)           
         )
@@ -54,9 +54,7 @@ try:
         print(row)
 except Exception as error:
     print(f"{error}")
-
 finally:
     """Commit and close"""
     connection.commit()
     close_connction(connection, cursor)
-

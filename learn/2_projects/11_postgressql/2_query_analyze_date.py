@@ -5,7 +5,24 @@ from conn import connect_to_db, close_connction
 connection, cursor = connect_to_db()
 
 try:
-    print("bla bla")
+    # cursor.execute("""
+    #                Select* FROM cars;
+    #                """)
+    # cursor.execute("""
+    #                SELECT year, brand, model FROM cars WHERE year > 2010 ORDER BY year LIMIT 3;
+    #                """)
+    # cursor.execute("""
+    #                  SELECT DISTINCT color FROM cars ORDER BY color;
+    #               """)
+    cursor.execute("""
+                   SELECT id FROM cars OFFSET
+                   """)
+
+
+    result = cursor.fetchall()
+    for row in result:
+        print(row)
+
 except Exception as error:
     print(f"{error}")
 

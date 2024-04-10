@@ -11,7 +11,7 @@ try:
             IF NOT EXISTS(SELECT 1 FROM information_schema.columns 
                 WHERE table_name ='cars' AND COLUMN_NAME = 'color') THEN
                 ALTER TABLE cars ADD COLUMN color VARCHAR(10);
-            end if;
+            END IF;
         END $$
         """) 
 
@@ -19,11 +19,41 @@ try:
         ALTER TABLE cars ALTER column color TYPE VARCHAR(30);
         """)
     cursor.execute("""
-        UPDATE cars set color = 'default_color' WHERE color IS NULL;
+        UPDATE cars SET color = 'default_color' WHERE color IS NULL;
         """)
     cursor.execute("""
         ALTER TABLE cars ALTER COLUMN color SET NOT NULL;
         """)
+
+    cursor.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS( SELECT 1 FROM information_schema.columns 
+                   WHERE table_name = 'cars' AND column_name = 'mileage') THEN
+                   ALTER TABLE cars ADD COLUMN mileage INTEGER;
+                END IF;
+            END $$
+            """)
+    cursor.execute("""
+            UPDATE cars SET mileage = 0 WHERE mileage is NULL ;
+            """)
+    cursor.execute("""
+        DO $$
+        BEGIN
+            IF NOT EXISTS( SELECT 1 FROM information_schema.columns
+                WHERE table_name = 'cars' AND column_name = 'price_gross') THEN
+                ALTER TABLE cars ADD COLUMN price_gross MONEY;
+            END IF;
+        END $$
+        """)
+    cursor.execute("""
+        UPDATE CARS SET price_gross = 0 WHERE price_gross IS NULL;        
+
+
+
+
+        """)
+
 
 except Exception as error:
     print(f"{error}")
