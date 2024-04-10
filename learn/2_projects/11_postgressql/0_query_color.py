@@ -8,8 +8,9 @@ try:
     cursor.execute("""
         DO $$
         BEGIN
-            IF NOT EXISTS(SELECT 1 FROM information_schema.columns WHERE table_name ='cars' AND COLUMN_NAME = 'color') THEN
-                    ALTER TABLE cars ADD COLUMN color VARCHAR(10);
+            IF NOT EXISTS(SELECT 1 FROM information_schema.columns 
+                WHERE table_name ='cars' AND COLUMN_NAME = 'color') THEN
+                ALTER TABLE cars ADD COLUMN color VARCHAR(10);
             end if;
         END $$
         """) 
