@@ -9,18 +9,20 @@ cars_id = random.randrange(1, 25)
 
 try:
     cursor.execute("""
-        CREATE FUNCTION add_price(money) RETURNS integer AS $$
-        DECLARE
-                   quantity integer := %s;
+    CREATE OR REPLACE FUNCTION add_price(cars_price money) RETURNS void AS $$
+    DECLARE
+        cars_id integer;
+    BEGIN
+        -- Losowe wybranie cars_id
+        cars_id := trunc(random() * 24 + 1)::integer;
 
-
-            RETURN 
-        END;
-        LANGUAGE plpgsql;
-
-
-    """, 
-    (cars_price, cars_id))
+        -- Aktualizacja cars_price dla wylosowanego cars_id
+        UPDATE cars
+        SET price = cars_price
+        WHERE id = cars_id;
+    END;
+    $$ LANGUAGE plpgsql;
+    """)
 
 
 except Exception as error:
