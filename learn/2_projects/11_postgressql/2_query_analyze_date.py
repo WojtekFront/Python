@@ -5,6 +5,18 @@ from conn import connect_to_db, close_connction
 connection, cursor = connect_to_db()
 
 try:
+
+    # cursor.execute("""SELECT AVG(year)::NUMERIC(10,0) FROM cars
+    #                ;""")
+    # cursor.execute("""
+    #                SELECT * FROM cars WHERE brand LIKE 'a%'
+    #                ;""")
+    # cursor.execute("""
+    #                SELECT DISTINCT brand FROM cars WHERE brand  in ('AUDI', 'FORD')
+    #                ;""")
+    cursor.execute("""
+                   SELECT c.id, c.* FROM cars as c WHERE id IN (SELECT id FROM cars WHERE brand ILIKE 'a%' limit 5)
+                   ;""")
     # cursor.execute("""
     #                SELECT round(AVG(year)) FROM cars
     #                ;""")
