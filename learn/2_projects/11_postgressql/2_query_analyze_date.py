@@ -14,8 +14,15 @@ try:
     # cursor.execute("""
     #                SELECT DISTINCT brand FROM cars WHERE brand  in ('AUDI', 'FORD')
     #                ;""")
+    # cursor.execute("""
+    #                SELECT c.id, c.* FROM cars as c WHERE id not IN (SELECT id FROM cars WHERE brand ILIKE 'a%' limit 5)
+    #                ;""")
     cursor.execute("""
-                   SELECT c.id, c.* FROM cars as c WHERE id IN (SELECT id FROM cars WHERE brand ILIKE 'a%' limit 5)
+                   SELECT c.id, c.brand || ' ' || c.model, c.* FROM cars c 
+                   WHERE id IN (
+                      SELECT id FROM cars 
+                         WHERE brand ILIKE 'a%' AND id BETWEEN 10 and 15 LIMIT 5)
+                   ORDER BY c.id
                    ;""")
     # cursor.execute("""
     #                SELECT round(AVG(year)) FROM cars
