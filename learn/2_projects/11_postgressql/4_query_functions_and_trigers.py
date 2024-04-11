@@ -13,10 +13,10 @@ try:
     DECLARE
         cars_id integer;
     BEGIN
-        -- Losowe wybranie cars_id
+        -- Random select cars_id
         cars_id := trunc(random() * 24 + 1)::integer;
 
-        -- Aktualizacja cars_price dla wylosowanego cars_id
+        -- Actualization cars_price for random cars_id
         UPDATE cars
         SET price = cars_price
         WHERE id = cars_id;

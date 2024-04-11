@@ -6,6 +6,11 @@ connection, cursor = connect_to_db()
 
 try:
     # cursor.execute("""
+    #                SELECT round(AVG(year)) FROM cars
+    #                ;""")
+    # cursor.execute("""SELECT COUNT(brand) FROM cars WHERE brand = 'FORD'
+    # ;""")
+    # cursor.execute("""
     #                Select* FROM cars;
     #                """)
     # cursor.execute("""
@@ -14,9 +19,9 @@ try:
     # cursor.execute("""
     #                  SELECT DISTINCT color FROM cars ORDER BY color;
     #               """)
-    cursor.execute("""
-                   SELECT id FROM cars OFFSET
-                   """)
+    # cursor.execute("""
+    #                SELECT id FROM cars OFFSET 5
+    #                """)
 
 
     result = cursor.fetchall()
