@@ -32,6 +32,16 @@ connection, cursor = connect_to_db()
 # age
 
 try:
+    cursor.execute("""CREATE TABLE IF NOT EXISTS person(
+     id auto_increment primary key,
+    firstname varchar(50),
+    lastname varchar(50),
+    age int              
+    )
+                   
+                   ;""")
+
+
     cursor.execute("""SELECT * FROM cars LIMIT 1
         """)
 except Exception as error:
