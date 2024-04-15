@@ -5,17 +5,31 @@ from conn import connect_to_db, close_connction
 connection, cursor = connect_to_db()
 
 try:
-    
-    cursor.execute(""" 
-        SELECT p.car_id, COUNT(p.car_id), c.brand 
-            FROM person as p
-            JOIN cars as c ON p.car_id = c.id
-            
-            GROUP BY p.car_id, c.brand
+    cursor.execute("""
+                   Select c.*, p.* FROM cars c
+                --   INNER JOIN person p ON c.id = p.car_id
+                  LEFT JOIN person p ON c.id = p.car_id
+                --   RIGHT JOIN person p ON c.id = p.car_id
+                --   FULL JOIN person p ON c.id = p.car_id
                    
-            HAVING  COUNT(P.car_id) > 1
-            ORDER BY p.car_id;
-    """)
+                   ;""")
+
+
+
+
+
+
+
+    # cursor.execute(""" 
+    #     SELECT p.car_id, COUNT(p.car_id), c.brand 
+    #         FROM person as p
+    #         JOIN cars as c ON p.car_id = c.id
+            
+    #         GROUP BY p.car_id, c.brand
+                   
+    #         HAVING  COUNT(P.car_id) > 1
+    #         ORDER BY p.car_id;
+    # """)
     # cursor.execute(""" 
     #     SELECT p.car_id, c.brand 
     #         FROM person as p
