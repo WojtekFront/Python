@@ -23,10 +23,11 @@ try:
     END;
     $$ LANGUAGE plpgsql;
     """)
-    cursor.execute("""CREATE TRIGGER
+    cursor.execute("""CREATE TRIGGER change_cars 
+                   AFTER UPDATE OR INSERT OR DLETE ON cars
+                   FOR EACH ROW
+                   EXECUTE FUNCTION xxx_change_cars();
                    
-
-
                 """)
 
 
