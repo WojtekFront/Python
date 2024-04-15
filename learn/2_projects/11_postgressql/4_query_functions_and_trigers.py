@@ -23,6 +23,11 @@ try:
     END;
     $$ LANGUAGE plpgsql;
     """)
+    cursor.execute("""CREATE TRIGGER
+                   
+
+
+                """)
 
 
 except Exception as error:
