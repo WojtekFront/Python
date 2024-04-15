@@ -1,5 +1,7 @@
 from conn import connect_to_db, close_connction
 import random
+from datetime import date
+
 
 """ open connection"""
 connection, cursor = connect_to_db()
@@ -9,7 +11,7 @@ cars_id = random.randrange(1, 25)
 
 try:
     cursor.execute("""
-    CREATE OR REPLACE FUNCTION add_price(cars_price money) RETURNS void AS $$
+    CREATE OR REPLACE FUNCTION fun_add_price(cars_price money) RETURNS void AS $$
     DECLARE
         cars_id integer;
     BEGIN
@@ -23,13 +25,37 @@ try:
     END;
     $$ LANGUAGE plpgsql;
     """)
-    cursor.execute("""CREATE TRIGGER change_cars 
-                   AFTER UPDATE OR INSERT OR DLETE ON cars
+    cursor.execute("""
+                   CREATE OR REPLACE FUNCTION fun_change_cars()
+                    RETURNS TRIGGERS AS $$
+                    BEGIN
+                        IF TG_OP = 'UPDATE' THEN
+                            IF OLD IS DISTINCT FROM NEW THEN
+                                INSERT INTO log (planned_maintance, type, description) 
+                                VALUES ('2024-04-15','update','new');
+                            END IF;
+                        RETURN NEW;
+                        ELSIF TG_OP = 'UPDATE' THEN
+                                INSERT INTO log (planned_maintance, type, description) 
+                                VALUES ('2024-04-15','insert','new');
+                            
+                        RETURN NEW;                        
+                        ELSIF TG_OP = 'UPDATE' THEN
+                                INSERT INTO log (planned_maintance, type, description) 
+                                VALUES ('2024-04-15','delete','new');
+                            RETURN OLD;
+                        ENDD IF;
+
+                    END
+                   $$ LANGUAGE plpgsql;
+                   ;""")
+
+    cursor.execute("""CREATE TRIGGER t_change_cars 
+                   AFTER UPDATE OR INSERT OR DELETE ON cars
                    FOR EACH ROW
                    EXECUTE FUNCTION xxx_change_cars();
                    
                 """)
-
 
 except Exception as error:
     print(f"{error}")
