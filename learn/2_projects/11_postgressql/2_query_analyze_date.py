@@ -5,7 +5,9 @@ from conn import connect_to_db, close_connction
 connection, cursor = connect_to_db()
 
 try:
-
+    cursor.execute("""
+                   SELECT * FROM cars
+                   ;""")
     # cursor.execute("""SELECT AVG(year)::NUMERIC(10,0) FROM cars
     #                ;""")
     # cursor.execute("""
@@ -17,13 +19,21 @@ try:
     # cursor.execute("""
     #                SELECT c.id, c.* FROM cars as c WHERE id not IN (SELECT id FROM cars WHERE brand ILIKE 'a%' limit 5)
     #                ;""")
-    cursor.execute("""
-                   SELECT c.id, c.brand || ' ' || c.model, c.* FROM cars c 
-                   WHERE id IN (
-                      SELECT id FROM cars 
-                         WHERE brand ILIKE 'a%' AND id BETWEEN 10 and 15 LIMIT 5)
-                   ORDER BY c.id
-                   ;""")
+    # cursor.execute("""
+    #                SELECT c.id, c.brand || ' ' || c.model, c.* FROM cars c 
+    #                WHERE id IN (
+    #                   SELECT id FROM cars 
+    #                      WHERE brand ILIKE 'a%' AND id BETWEEN 10 and 15 LIMIT 5)
+    #                ORDER BY c.id
+    #                ;""")
+    # cursor.execute("""
+    #                SELECT c.* FROM cars c
+    #                WHERE NOT EXISTS (
+    #                SELECT p.id FROM person p
+    #                WHERE p.car_id = c.id
+    #                AND p.car_id = 1
+    #                )
+    #                ;""")
     # cursor.execute("""
     #                SELECT round(AVG(year)) FROM cars
     #                ;""")
