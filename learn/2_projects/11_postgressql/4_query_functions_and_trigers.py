@@ -26,34 +26,32 @@ try:
     $$ LANGUAGE plpgsql;
     """)
     cursor.execute("""
-                   CREATE OR REPLACE FUNCTION fun_change_cars()
-                    RETURNS TRIGGERS AS $$
+                   CREATE OR REPLACE FUNCTION fun_change_in_table()
+                    RETURNS TRIGGER AS $$
                     BEGIN
                         IF TG_OP = 'UPDATE' THEN
-                            IF OLD IS DISTINCT FROM NEW THEN
-                                INSERT INTO log (planned_maintance, type, description) 
-                                VALUES ('2024-04-15','update','new');
-                            END IF;
-                        RETURN NEW;
-                        ELSIF TG_OP = 'UPDATE' THEN
+                                IF OLD IS DISTINCT FROM NEW THEN
+                                    INSERT INTO log (planned_maintance, type, description) 
+                                    VALUES ('2024-04-15','update','new');
+                                END IF;
+                            RETURN NEW;
+                        ELSIF TG_OP = 'INSERT' THEN
                                 INSERT INTO log (planned_maintance, type, description) 
                                 VALUES ('2024-04-15','insert','new');
-                            
-                        RETURN NEW;                        
-                        ELSIF TG_OP = 'UPDATE' THEN
+                            RETURN NEW;                        
+                        ELSIF TG_OP = 'DELETE' THEN
                                 INSERT INTO log (planned_maintance, type, description) 
                                 VALUES ('2024-04-15','delete','new');
                             RETURN OLD;
-                        ENDD IF;
-
-                    END
+                        END IF;
+                    END;
                    $$ LANGUAGE plpgsql;
                    ;""")
 
-    cursor.execute("""CREATE TRIGGER t_change_cars 
-                   AFTER UPDATE OR INSERT OR DELETE ON cars
+    cursor.execute("""CREATE TRIGGER t_change_table 
+                   AFTER UPDATE OR INSERT OR DELETE ON cars, car_condition, person
                    FOR EACH ROW
-                   EXECUTE FUNCTION xxx_change_cars();
+                   EXECUTE FUNCTION fun_change_in_table();
                    
                 """)
 
