@@ -6,25 +6,31 @@ from datetime import date
 """ open connection"""
 connection, cursor = connect_to_db()
 
-cars_price = 1000 * random.randrange(20, 200)
+new_cars_price = 1000 * random.randrange(20, 200)
 cars_id = random.randrange(1, 25)
 
 try:
     cursor.execute("""
-    CREATE OR REPLACE FUNCTION fun_add_price(cars_price money) RETURNS void AS $$
+    CREATE OR REPLACE FUNCTION fun_add_price(new_price money) RETURNS void AS $$
     DECLARE
-        cars_id integer;
+        rand_cars_id integer;
     BEGIN
         -- Random select cars_id
-        cars_id := trunc(random() * 24 + 1)::integer;
+        rand_cars_id := trunc(random() * 24 + 1)::integer;
 
         -- Actualization cars_price for random cars_id
         UPDATE cars
-        SET price = cars_price
-        WHERE id = cars_id;
+        SET price_gross = new_price
+        WHERE id = rand_cars_id;
     END;
     $$ LANGUAGE plpgsql;
     """)
+
+    cursor.execute("""CREATE TRIGGER t_update_price
+                   AFTER INSERT ON log
+                   FOR EACH ROW
+                   EXECUTE FUNCTION fun_add_price(%s)
+                   ;""",(new_cars_price))
     cursor.execute("""
                    CREATE OR REPLACE FUNCTION fun_change_in_table()
                     RETURNS TRIGGER AS $$
@@ -54,6 +60,7 @@ try:
                    EXECUTE FUNCTION fun_change_in_table();
                    
                 """)
+    
 
 except Exception as error:
     print(f"{error}")
