@@ -20,21 +20,37 @@ try:
     #                 END;
     #             $$ LANGUAGE plpgsql;
     #             """)
+    # cursor.execute("""
+    #           CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
+    #                RETURNS varchar 
+    #                 AS $$
+    #             --   DECLARE word ALIAS for $1;
+    #             --           startPos ALIAS for $2;
+    #             --           cnt ALIAS for $3;
+    #                 BEGIN
+    #                     RETURN SUBSTRING(word, startPos, cnt);
+    #                 END;
+    #             $$ LANGUAGE plpgsql;
+    #             """)
+    # cursor.execute
+    # cursor.execute("""SELECT  * FROM fn_test('software_it',1,4)""")
     cursor.execute("""
-    CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
+                CREATE OR REPLACE FUNCTION fn_test2(first_word varchar, second_word varchar) 
                    RETURNS varchar 
                     AS $$
-                --   DECLARE word ALIAS for $1;
-                --           startPos ALIAS for $2;
-                --           cnt ALIAS for $3;
-                  
-   
                     BEGIN
-                        RETURN SUBSTRING(word, startPos, cnt);
+                        IF first_word IS null OR second_word IS null THEN
+                            RETURN 'First word or second word is null';
+                        ELSE
+                            RETURN first_word ||' ' || second_word;
+                        END IF;
                     END;
                 $$ LANGUAGE plpgsql;
                 """)
-    cursor.execute("""SELECT  * FROM fn_test('software_it',1,4)""")
+    cursor.execute
+    
+
+    
     
 
     # cursor.execute("""CREATE TRIGGER t_update_price
