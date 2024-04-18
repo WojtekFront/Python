@@ -10,29 +10,40 @@ new_cars_price = 1000 * random.randrange(20, 200)
 cars_id = random.randrange(1, 25)
 
 try:
+    # cursor.execute("""
+    # CREATE OR REPLACE FUNCTION fn_add_price(varchar, integer,integer) 
+    #                RETURNS varchar --TRIGGER 
+    #                AS $$
+   
+    #                 BEGIN
+    #                     RETURN SUBSTRING($1, $2, $3);
+    #                 END;
+    #             $$ LANGUAGE plpgsql;
+    #             """)
     cursor.execute("""
-    CREATE OR REPLACE FUNCTION fun_add_price(new_price money) RETURNS void AS $$
-    DECLARE
-        rand_cars_id integer;
-    BEGIN
-        -- Random select cars_id
-        rand_cars_id := trunc(random() * 24 + 1)::integer;
+    CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
+                   RETURNS varchar 
+                    AS $$
+                --   DECLARE word ALIAS for $1;
+                --           startPos ALIAS for $2;
+                --           cnt ALIAS for $3;
+                  
+   
+                    BEGIN
+                        RETURN SUBSTRING(word, startPos, cnt);
+                    END;
+                $$ LANGUAGE plpgsql;
+                """)
+    cursor.execute("""SELECT  * FROM fn_test('software_it',1,4)""")
+    
 
-        -- Actualization cars_price for random cars_id
-        UPDATE cars
-        SET price_gross = new_price
-        WHERE id = rand_cars_id;
-    END;
-    $$ LANGUAGE plpgsql;
-    """)
-
-    cursor.execute("""CREATE TRIGGER t_update_price
-                   AFTER INSERT ON log
-                   FOR EACH ROW
-                   EXECUTE FUNCTION fun_add_price(%s)
-                   ;""",(new_cars_price))
+    # cursor.execute("""CREATE TRIGGER t_update_price
+    #                AFTER INSERT ON log
+    #                FOR EACH ROW
+    #                EXECUTE FUNCTION fn_add_price()
+    #                ;""")
     cursor.execute("""
-                   CREATE OR REPLACE FUNCTION fun_change_in_table()
+                   CREATE OR REPLACE FUNCTION fn_change_in_table()
                     RETURNS TRIGGER AS $$
                     BEGIN
                         IF TG_OP = 'UPDATE' THEN
@@ -54,13 +65,22 @@ try:
                    $$ LANGUAGE plpgsql;
                    ;""")
 
-    cursor.execute("""CREATE TRIGGER t_change_table 
-                   AFTER UPDATE OR INSERT OR DELETE ON cars, car_condition, person
-                   FOR EACH ROW
-                   EXECUTE FUNCTION fun_change_in_table();
-                   
-                """)
+    # cursor.execute("""CREATE TRIGGER t_change_table 
+    #                AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
+    #                FOR EACH ROW
+    #                EXECUTE FUNCTION fn_change_in_table();
+    #             """)
     
+    # cursor.execute(""" CREATE TRIGGER t_change_table_car_condition
+    #                AFTER UPDATE OR INSERT OR DELETE ON car_condition
+    #                FOR EACH ROW
+    #                EXECUTE FUNCTION fn_change_in_table();
+    #             """)
+    # cursor.execute(""" CREATE TRIGGER t_change_table_person 
+    #                AFTER UPDATE OR INSERT OR DELETE ON person
+    #                FOR EACH ROW
+    #                EXECUTE FUNCTION fn_change_in_table();
+    #             """)    
 
 except Exception as error:
     print(f"{error}")
