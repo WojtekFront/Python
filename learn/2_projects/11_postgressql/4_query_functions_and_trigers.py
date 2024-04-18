@@ -34,52 +34,74 @@ try:
     #             """)
     # cursor.execute
     # cursor.execute("""SELECT  * FROM fn_test('software_it',1,4)""")
-    cursor.execute("""
-                CREATE OR REPLACE FUNCTION fn_test2(first_word varchar, second_word varchar) 
-                   RETURNS varchar 
-                    AS $$
-                    BEGIN
-                        IF first_word IS null OR second_word IS null THEN
-                            RETURN 'First word or second word is null';
-                        ELSE
-                            RETURN first_word ||' ' || second_word;
-                        END IF;
-                    END;
-                $$ LANGUAGE plpgsql;
-                """)
-    cursor.execute
-    
-
-    
-    
+    # cursor.execute("""
+    #             CREATE OR REPLACE FUNCTION fn_test2(first_word varchar, second_word varchar) 
+    #                RETURNS varchar 
+    #                 AS $$
+    #                 BEGIN
+    #                     IF first_word IS null OR second_word IS null THEN
+    #                         RETURN 'First word or second word is null';
+    #                     ELSE
+    #                     --    RETURN first_word ||' ' || second_word;
+    #                           RETURN concat_ws(' / ', initCap(first_word), initCap(first_word));
+    #                     END IF;
+    #                 END;
+    #             $$ LANGUAGE plpgsql;
+    #             """)
+    # cursor.execute("""SELECT  * FROM fn_test2('software', 'IT');""")
+    # cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test3(inout num1 int, inout num2 int)
+    #                AS $$
+    #                BEGIN
+    #                     SELECT num1, num2 INTO num2, num1;
+    #                END;
+    #                $$
+    #                LANGUAGE plpgsql;
+    #                ;""")
+    # cursor.execute("""SELECT * FROM fn_test3(11, 22)""")
+    cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test4(tabel_v[])
+                   return tabel_v
+                   AS $$
+                   DECLARE total tabel_v :=0;
+                           val numeric;
+                           cnt int := 0;
+                           n_array ALAS for $1
+                   BEGIN
+                        foreach val in array n_array
+                        loop
+                        total := total + val;
+                   
+                        end loop;
+                   $$
+                   LANGUAGE plpgsql;
+                   ;""")
 
     # cursor.execute("""CREATE TRIGGER t_update_price
     #                AFTER INSERT ON log
     #                FOR EACH ROW
     #                EXECUTE FUNCTION fn_add_price()
     #                ;""")
-    cursor.execute("""
-                   CREATE OR REPLACE FUNCTION fn_change_in_table()
-                    RETURNS TRIGGER AS $$
-                    BEGIN
-                        IF TG_OP = 'UPDATE' THEN
-                                IF OLD IS DISTINCT FROM NEW THEN
-                                    INSERT INTO log (planned_maintance, type, description) 
-                                    VALUES ('2024-04-15','update','new');
-                                END IF;
-                            RETURN NEW;
-                        ELSIF TG_OP = 'INSERT' THEN
-                                INSERT INTO log (planned_maintance, type, description) 
-                                VALUES ('2024-04-15','insert','new');
-                            RETURN NEW;                        
-                        ELSIF TG_OP = 'DELETE' THEN
-                                INSERT INTO log (planned_maintance, type, description) 
-                                VALUES ('2024-04-15','delete','new');
-                            RETURN OLD;
-                        END IF;
-                    END;
-                   $$ LANGUAGE plpgsql;
-                   ;""")
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION fn_change_in_table()
+    #                 RETURNS TRIGGER AS $$
+    #                 BEGIN
+    #                     IF TG_OP = 'UPDATE' THEN
+    #                             IF OLD IS DISTINCT FROM NEW THEN
+    #                                 INSERT INTO log (planned_maintance, type, description) 
+    #                                 VALUES ('2024-04-15','update','new');
+    #                             END IF;
+    #                         RETURN NEW;
+    #                     ELSIF TG_OP = 'INSERT' THEN
+    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             VALUES ('2024-04-15','insert','new');
+    #                         RETURN NEW;                        
+    #                     ELSIF TG_OP = 'DELETE' THEN
+    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             VALUES ('2024-04-15','delete','new');
+    #                         RETURN OLD;
+    #                     END IF;
+    #                 END;
+    #                $$ LANGUAGE plpgsql;
+    #                ;""")
 
     # cursor.execute("""CREATE TRIGGER t_change_table 
     #                AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
