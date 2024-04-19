@@ -58,22 +58,25 @@ try:
     #                LANGUAGE plpgsql;
     #                ;""")
     # cursor.execute("""SELECT * FROM fn_test3(11, 22)""")
-    cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test4(tabel_v[])
-                   return tabel_v
+    cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test4(numeric[])
+                   returns numeric
                    AS $$
-                   DECLARE total tabel_v :=0;
+                   DECLARE total numeric :=0;
                            val numeric;
                            cnt int := 0;
-                           n_array ALAS for $1
+                           n_array ALIAS for $1;
                    BEGIN
                         foreach val in array n_array
-                        loop
-                        total := total + val;
-                   
-                        end loop;
+                        LOOP
+                            total := total + val;
+                            cnt := cnt + 1;
+                        END LOOP;
+                        RETURN total/cnt;
+                   END;
                    $$
                    LANGUAGE plpgsql;
                    ;""")
+    cursor.execute("""SELECT fn_test4(array[1,2,3,4,5])""")
 
     # cursor.execute("""CREATE TRIGGER t_update_price
     #                AFTER INSERT ON log
