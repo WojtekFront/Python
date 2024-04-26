@@ -2,7 +2,6 @@ from conn import connect_to_db, close_connction
 import random
 from datetime import date
 
-
 """ open connection"""
 connection, cursor = connect_to_db()
 
