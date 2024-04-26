@@ -33,27 +33,21 @@ def existing_words(f_word, s_word):
                 compare_letter_in_words(f_word, s_word, word_len)
         else:
             print((f"words is not ok"))
-            # sys.exit(0)
+            sys.exit(0)
     except:
         print((f"words do not match, error"))
-        # sys.exit(1)
+        sys.exit(1)
 
 def compare_letter_in_words(f_word, s_word, word_len):
-    # print("\n \n hello")
     f_list = sorted(list(f_word.lower()))
     s_list = sorted(list(s_word.lower()))
-    # print(f_list[1])
+    answear = "words same"
     for i in range( word_len):
-    
-        print(f_list[i] + " " + s_list[i])
-    
-    
-    # for i in range(word_len):
-    #     print(f_word[i] + ", "+ s_word[i])
-    #     if f_word[i]!= s_word[i]:
-    #         print("words do not match")
-            
-
+        if f_list[i] != s_list[i]:
+            answear = "words do not match"
+            break
+    print(answear)
+        
 def compare_words(f_word, s_word):
      try:
         if f_word == s_word:
@@ -62,10 +56,7 @@ def compare_words(f_word, s_word):
             print("words do not match")
      except:
         print("words do not match, error")
-        # sys.exit(1)
-
-
-
+        
 # test example
 # existing_words(word_0, word_1)
 # existing_words(word_2, word_6)
