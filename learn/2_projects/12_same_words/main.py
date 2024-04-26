@@ -1,10 +1,10 @@
 import sys
 
 word_0 = ""
-word_1 = "    Ryba     "
-word_2 = "piesek"
+word_1 = "    aaaaRyba     "
+word_2 = "aByraaaa"
 word_3 = "krowa"
-word_4 = "ryba"
+word_4 = "aByraaaa"
 word_5 = "krowa"
 word_6 = None
 words_list = [word_1, word_2, word_3, word_4, word_5]
@@ -28,8 +28,9 @@ def existing_words(f_word, s_word):
         if not (f_word and  s_word):
             print((f"incorrect word"))
             # sys.exit(0)
-        elif len(f_word) > 0 and len(s_word) > 0: 
-                compare_words(f_word, s_word)
+        elif len(f_word) > 0 and len(s_word) > 0 and len(f_word) == len(s_word): 
+                word_len = len(f_word)
+                compare_letter_in_words(f_word, s_word, word_len)
         else:
             print((f"words is not ok"))
             # sys.exit(0)
@@ -37,14 +38,30 @@ def existing_words(f_word, s_word):
         print((f"words do not match, error"))
         # sys.exit(1)
 
+def compare_letter_in_words(f_word, s_word, word_len):
+    # print("\n \n hello")
+    f_list = sorted(list(f_word.lower()))
+    s_list = sorted(list(s_word.lower()))
+    # print(f_list[1])
+    for i in range( word_len):
+    
+        print(f_list[i] + " " + s_list[i])
+    
+    
+    # for i in range(word_len):
+    #     print(f_word[i] + ", "+ s_word[i])
+    #     if f_word[i]!= s_word[i]:
+    #         print("words do not match")
+            
+
 def compare_words(f_word, s_word):
      try:
         if f_word == s_word:
-            print((f"words match"))
+            print("words match")
         else:
-            print((f"words do not match"))
+            print("words do not match")
      except:
-        print((f"words do not match, error"))
+        print("words do not match, error")
         # sys.exit(1)
 
 
@@ -53,8 +70,8 @@ def compare_words(f_word, s_word):
 # existing_words(word_0, word_1)
 # existing_words(word_2, word_6)
 
-existing_words(word_1, word_2)
 existing_words(word_1, word_4)
-existing_words(word_3, word_5)
+# existing_words(word_1, word_4)
+# existing_words(word_3, word_5)
 
 
