@@ -48,12 +48,7 @@ try:
         """)
     cursor.execute("""
         UPDATE CARS SET price_gross = 0 WHERE price_gross IS NULL;        
-
-
-
-
         """)
-
 
 except Exception as error:
     print(f"{error}")

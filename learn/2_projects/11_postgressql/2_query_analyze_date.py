@@ -64,4 +64,3 @@ finally:
     """Commit and close"""
     connection.commit()
     close_connction(connection, cursor)
-

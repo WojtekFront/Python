@@ -1,19 +1,6 @@
 from conn import connect_to_db, close_connction
 import random
 
-
-# cars_brand = random.choice(["AUDI", "BMW", "FORD"])
-# if not cars_brand:
-#     new_value = "Error beceause is empty"
-# elif cars_brand == "AUDI":
-#     cars_model = random.choice(["A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8", "TT", "R8"])
-# elif cars_brand == "BMW":
-#     cars_model =random.choice(["1 Series", "3 Series", "5 Series", "7 Series", "X1", "X3", "X5", "Z4", "i3", "i8"])
-# elif cars_brand == "FORD":
-#     cars_model = random.choice(["Fiesta", "Focus", "Mustang", "Explorer", "F-150", "Mondeo", "Ranger"])    
-# else:
-#     new_value = "not correct value "+cars_brand    
-
 cars_options = {
     "AUDI": ["A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8", "TT", "R8"],
     "BMW": ["1 Series", "3 Series", "5 Series", "7 Series", "X1", "X3", "X5", "Z4", "i3", "i8"],
@@ -32,8 +19,6 @@ cars_color = random.choice([
 cars_price = 1000 * random.randrange(20, 200)
 cars_milage = 10000 * random.randrange(5, 400)
 cars_data = 2000 + random.randrange(1, 24)
-
-
 
 """ open connection"""
 connection, cursor = connect_to_db()

@@ -2,12 +2,7 @@ from conn import connect_to_db, close_connction
 from datetime import date, timedelta
 import random
 
-
 random_car_id = random.randint(1,25)
-
-
-
-
 random_insurance = random.randint(-50, 365)
 insurance_date   =  date.today() + timedelta(days=random_insurance)
 
@@ -39,4 +34,3 @@ finally:
     """Commit and close"""
     connection.commit()
     close_connction(connection, cursor)
-

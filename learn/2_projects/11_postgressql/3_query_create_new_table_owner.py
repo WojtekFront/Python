@@ -30,7 +30,6 @@ connection, cursor = connect_to_db()
 # firstname 
 # secondname
 # age
-
 try:
     # cursor.execute("""CREATE TABLE IF NOT EXISTS person(
     #     id SERIAL PRIMARY KEY,
@@ -83,4 +82,3 @@ finally:
     """Commit and close"""
     connection.commit()
     close_connction(connection, cursor)
-

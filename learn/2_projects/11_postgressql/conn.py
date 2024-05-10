@@ -23,5 +23,3 @@ def close_connction(connnection, cursor):
     except Exception as error:
         print(f"Error closing connection to database: {error}")
         exit(1)
-
-
