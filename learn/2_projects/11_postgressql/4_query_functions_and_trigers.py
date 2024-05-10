@@ -9,16 +9,16 @@ new_cars_price = 1000 * random.randrange(20, 200)
 cars_id = random.randrange(1, 25)
 
 try:
-    # cursor.execute("""
-    # CREATE OR REPLACE FUNCTION fn_add_price(varchar, integer,integer) 
-    #                RETURNS varchar --TRIGGER 
-    #                AS $$
+    cursor.execute("""
+    CREATE OR REPLACE FUNCTION fn_add_price(varchar, integer,integer) 
+                   RETURNS varchar --TRIGGER 
+                   AS $$
    
-    #                 BEGIN
-    #                     RETURN SUBSTRING($1, $2, $3);
-    #                 END;
-    #             $$ LANGUAGE plpgsql;
-    #             """)
+                    BEGIN
+                        RETURN SUBSTRING($1, $2, $3);
+                    END;
+                $$ LANGUAGE plpgsql;
+                """)
     # cursor.execute("""
     #           CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
     #                RETURNS varchar 
