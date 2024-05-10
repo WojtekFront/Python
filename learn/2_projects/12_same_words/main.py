@@ -38,6 +38,7 @@ def existing_words(f_word, s_word):
         print((f"words do not match, error"))
         sys.exit(1)
 
+# learnindg solutions
 def compare_letter_in_words(f_word, s_word, word_len):
     f_list = sorted(list(f_word.lower()))
     s_list = sorted(list(s_word.lower()))
@@ -47,7 +48,8 @@ def compare_letter_in_words(f_word, s_word, word_len):
             answear = "words do not match"
             break
     print(answear)
-        
+
+# the best solutions        
 def compare_words(f_word, s_word):
      try:
         if f_word == s_word:
