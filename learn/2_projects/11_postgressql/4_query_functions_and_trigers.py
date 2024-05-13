@@ -8,14 +8,26 @@ connection, cursor = connect_to_db()
 new_cars_price = 1000 * random.randrange(20, 200)
 cars_id = random.randrange(1, 25)
 
+   
 try:
+    # cursor.execute("""
+    # CREATE OR REPLACE FUNCTION fn_add_price(varchar, integer,integer) 
+    #                RETURNS varchar --TRIGGER 
+    #                AS $$
+   
+    #                 BEGIN
+    #                     RETURN SUBSTRING($1, $2, $3);
+    #                 END;
+    #             $$ LANGUAGE plpgsql;
+    #             """)
+    cursor.execute(""" DROP FUNCTION IF EXISTS fn_add_price() CASCADE;""")
     cursor.execute("""
-    CREATE OR REPLACE FUNCTION fn_add_price(varchar, integer,integer) 
-                   RETURNS varchar --TRIGGER 
+                CREATE OR REPLACE FUNCTION fn_add_price() 
+                   RETURNS numeric --TRIGGER 
                    AS $$
    
                     BEGIN
-                        RETURN SUBSTRING($1, $2, $3);
+                        RETURN AVG(price_gross) FROM cars ;
                     END;
                 $$ LANGUAGE plpgsql;
                 """)
@@ -57,24 +69,24 @@ try:
     #                LANGUAGE plpgsql;
     #                ;""")
     # cursor.execute("""SELECT * FROM fn_test3(11, 22)""")
-    cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test4(numeric[])
-                   returns numeric
-                   AS $$
-                   DECLARE total numeric :=0;
-                           val numeric;
-                           cnt int := 0;
-                           n_array ALIAS for $1;
-                   BEGIN
-                        foreach val in array n_array
-                        LOOP
-                            total := total + val;
-                            cnt := cnt + 1;
-                        END LOOP;
-                        RETURN total/cnt;
-                   END;
-                   $$
-                   LANGUAGE plpgsql;
-                   ;""")
+    # cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test4(numeric[])
+    #                returns numeric
+    #                AS $$
+    #                DECLARE total numeric :=0;
+    #                        val numeric;
+    #                        cnt int := 0;
+    #                        n_array ALIAS for $1;
+    #                BEGIN
+    #                     foreach val in array n_array
+    #                     LOOP
+    #                         total := total + val;
+    #                         cnt := cnt + 1;
+    #                     END LOOP;
+    #                     RETURN total/cnt;
+    #                END;
+    #                $$
+    #                LANGUAGE plpgsql
+    #                ;""")
     cursor.execute("""SELECT fn_test4(array[1,2,3,4,5])""")
 
     # cursor.execute("""CREATE TRIGGER t_update_price
