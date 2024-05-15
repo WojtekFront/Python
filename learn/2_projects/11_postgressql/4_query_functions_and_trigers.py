@@ -10,29 +10,34 @@ cars_id = random.randrange(1, 25)
 
    
 try:
-    # cursor.execute("""
-    # CREATE OR REPLACE FUNCTION fn_add_price(varchar, integer,integer) 
-    #                RETURNS varchar --TRIGGER 
-    #                AS $$
-   
-    #                 BEGIN
-    #                     RETURN SUBSTRING($1, $2, $3);
-    #                 END;
-    #             $$ LANGUAGE plpgsql;
-    #             """)
     cursor.execute(""" DROP FUNCTION IF EXISTS fn_add_price() CASCADE;""")
     cursor.execute("""
-                CREATE OR REPLACE FUNCTION fn_add_price() 
-                   RETURNS numeric --TRIGGER 
-                   AS 
-                   $$
+    CREATE OR REPLACE FUNCTION fn_add_price() 
+                   RETURNS void --TRIGGER 
+                   AS $$
    
                     BEGIN
-                        RETURN AVG(year) FROM cars ;
+                       INSERT INTO log ( type, description) VALUES( 'change', 'new2');
                     END;
-                $$ 
-                LANGUAGE PLPGSQL;
+                $$ LANGUAGE plpgsql;
                 """)
+    # cursor.execute(""" DROP ROUTINE IF EXISTS fn_add_price(int, int) CASCADE;""")
+  
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION fn_add_price(int, int)
+    #                RETURNS int
+    #                AS 
+    #                $body$
+    #                -- INSERT INTO log
+    #                --BEGIN
+    #                SELECT $1 + $2 + $1;
+    #                --END;
+    #                $body$
+    #                LANGUAGE SQL -- Using the SQL language
+                
+    #                """)
+
+
     # cursor.execute("""
     #           CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
     #                RETURNS varchar 
@@ -96,6 +101,29 @@ try:
     #                FOR EACH ROW
     #                EXECUTE FUNCTION fn_add_price()
     #                ;""")
+    cursor.execute(""" DROP FUNCTION IF EXISTS fn_change_in_table() CASCADE ;""")
+    cursor.execute("""
+                   CREATE OR REPLACE FUNCTION fn_change_in_table()
+                    RETURNS TRIGGER AS $$
+                    BEGIN
+                        IF TG_OP = 'UPDATE' THEN
+                                IF OLD IS DISTINCT FROM NEW THEN
+                                    INSERT INTO log ( type, description) 
+                                    VALUES ('update','new2');
+                                END IF;
+                            RETURN NEW;
+                        ELSIF TG_OP = 'INSERT' THEN
+                                INSERT INTO log (type, description) 
+                                VALUES ('insert','new1');
+                            RETURN NEW;                        
+                        ELSIF TG_OP = 'DELETE' THEN
+                                INSERT INTO log (type, description) 
+                                VALUES ('delete','new1');
+                            RETURN OLD;
+                        END IF;
+                    END;
+                   $$ LANGUAGE plpgsql;
+                   """)    
     # cursor.execute("""
     #                CREATE OR REPLACE FUNCTION fn_change_in_table()
     #                 RETURNS TRIGGER AS $$
@@ -103,7 +131,7 @@ try:
     #                     IF TG_OP = 'UPDATE' THEN
     #                             IF OLD IS DISTINCT FROM NEW THEN
     #                                 INSERT INTO log (planned_maintance, type, description) 
-    #                                 VALUES ('2024-04-15','update','new');
+    #                                 VALUES ('2024-04-15','update','new2');
     #                             END IF;
     #                         RETURN NEW;
     #                     ELSIF TG_OP = 'INSERT' THEN
@@ -117,13 +145,13 @@ try:
     #                     END IF;
     #                 END;
     #                $$ LANGUAGE plpgsql;
-    #                ;""")
+    #                """)
 
-    # cursor.execute("""CREATE TRIGGER t_change_table 
-    #                AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
-    #                FOR EACH ROW
-    #                EXECUTE FUNCTION fn_change_in_table();
-    #             """)
+    cursor.execute("""CREATE TRIGGER t_change_table 
+                   AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
+                   FOR EACH ROW
+                   EXECUTE FUNCTION fn_change_in_table();
+                """)
     
     # cursor.execute(""" CREATE TRIGGER t_change_table_car_condition
     #                AFTER UPDATE OR INSERT OR DELETE ON car_condition
