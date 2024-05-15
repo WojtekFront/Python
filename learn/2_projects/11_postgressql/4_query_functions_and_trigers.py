@@ -24,12 +24,14 @@ try:
     cursor.execute("""
                 CREATE OR REPLACE FUNCTION fn_add_price() 
                    RETURNS numeric --TRIGGER 
-                   AS $$
+                   AS 
+                   $$
    
                     BEGIN
-                        RETURN AVG(price_gross) FROM cars ;
+                        RETURN AVG(year) FROM cars ;
                     END;
-                $$ LANGUAGE plpgsql;
+                $$ 
+                LANGUAGE PLPGSQL;
                 """)
     # cursor.execute("""
     #           CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
