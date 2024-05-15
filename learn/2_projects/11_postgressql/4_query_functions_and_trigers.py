@@ -108,17 +108,17 @@ try:
                     BEGIN
                         IF TG_OP = 'UPDATE' THEN
                                 IF OLD IS DISTINCT FROM NEW THEN
-                                    INSERT INTO log ( type, description) 
-                                    VALUES ('update','new2');
+                                    INSERT INTO log (planned_maintance, type, description) 
+                                    VALUES (CURRENT_DATE,'update','new2');
                                 END IF;
                             RETURN NEW;
                         ELSIF TG_OP = 'INSERT' THEN
-                                INSERT INTO log (type, description) 
-                                VALUES ('insert','new1');
+                                INSERT INTO log (planned_maintance, type, description) 
+                                VALUES (CURRENT_DATE,'insert','new1');
                             RETURN NEW;                        
                         ELSIF TG_OP = 'DELETE' THEN
-                                INSERT INTO log (type, description) 
-                                VALUES ('delete','new1');
+                                INSERT INTO log (planned_maintance, type, description) 
+                                VALUES (CURRENT_DATE,'delete','new1');
                             RETURN OLD;
                         END IF;
                     END;
