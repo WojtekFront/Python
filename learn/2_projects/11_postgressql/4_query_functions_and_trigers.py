@@ -10,17 +10,17 @@ cars_id = random.randrange(1, 25)
 
    
 try:
-    cursor.execute(""" DROP FUNCTION IF EXISTS fn_add_price() CASCADE;""")
-    cursor.execute("""
-    CREATE OR REPLACE FUNCTION fn_add_price() 
-                   RETURNS void --TRIGGER 
-                   AS $$
+    # cursor.execute(""" DROP FUNCTION IF EXISTS fn_add_price() CASCADE;""")
+    # cursor.execute("""
+    # CREATE OR REPLACE FUNCTION fn_add_price() 
+    #                RETURNS void --TRIGGER 
+    #                AS $$
    
-                    BEGIN
-                       INSERT INTO log ( type, description) VALUES( 'change', 'new2');
-                    END;
-                $$ LANGUAGE plpgsql;
-                """)
+    #                 BEGIN
+    #                    INSERT INTO log ( type, description) VALUES( 'change', 'new2');
+    #                 END;
+    #             $$ LANGUAGE plpgsql;
+    #             """)
     # cursor.execute(""" DROP ROUTINE IF EXISTS fn_add_price(int, int) CASCADE;""")
   
     # cursor.execute("""
@@ -94,36 +94,39 @@ try:
     #                $$
     #                LANGUAGE plpgsql
     #                ;""")
-    cursor.execute("""SELECT fn_test4(array[1,2,3,4,5])""")
+    # cursor.execute("""SELECT fn_test4(array[1,2,3,4,5])""")
 
     # cursor.execute("""CREATE TRIGGER t_update_price
     #                AFTER INSERT ON log
     #                FOR EACH ROW
     #                EXECUTE FUNCTION fn_add_price()
     #                ;""")
-    cursor.execute(""" DROP FUNCTION IF EXISTS fn_change_in_table() CASCADE ;""")
-    cursor.execute("""
-                   CREATE OR REPLACE FUNCTION fn_change_in_table()
-                    RETURNS TRIGGER AS $$
-                    BEGIN
-                        IF TG_OP = 'UPDATE' THEN
-                                IF OLD IS DISTINCT FROM NEW THEN
-                                    INSERT INTO log (planned_maintance, type, description) 
-                                    VALUES (CURRENT_DATE,'update','new2');
-                                END IF;
-                            RETURN NEW;
-                        ELSIF TG_OP = 'INSERT' THEN
-                                INSERT INTO log (planned_maintance, type, description) 
-                                VALUES (CURRENT_DATE,'insert','new1');
-                            RETURN NEW;                        
-                        ELSIF TG_OP = 'DELETE' THEN
-                                INSERT INTO log (planned_maintance, type, description) 
-                                VALUES (CURRENT_DATE,'delete','new1');
-                            RETURN OLD;
-                        END IF;
-                    END;
-                   $$ LANGUAGE plpgsql;
-                   """)    
+    # cursor.execute(""" DROP FUNCTION IF EXISTS fn_change_in_table() CASCADE ;""")
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION fn_change_in_table()
+    #                 RETURNS TRIGGER AS $$
+    #                 BEGIN
+    #                     IF TG_OP = 'UPDATE' THEN
+    #                             IF OLD IS DISTINCT FROM NEW THEN
+    #                                 INSERT INTO log (planned_maintance, type, description) 
+    #                                 VALUES (CURRENT_DATE,'update','new2');
+    #                             END IF;
+    #                         RETURN NEW;
+    #                     ELSIF TG_OP = 'INSERT' THEN
+    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             VALUES (CURRENT_DATE,'insert','new1');
+    #                         RETURN NEW;                        
+    #                     ELSIF TG_OP = 'DELETE' THEN
+    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             VALUES (CURRENT_DATE,'delete','new1');
+    #                         RETURN OLD;
+    #                     END IF;
+    #                 END;
+    #                $$ LANGUAGE plpgsql;
+    #                """)    
+    # cursor.execute("""
+    #                SELECT MAX(price_gross::NUMERIC) FROM cars;
+    #                """)
     # cursor.execute("""
     #                CREATE OR REPLACE FUNCTION fn_change_in_table()
     #                 RETURNS TRIGGER AS $$
@@ -147,11 +150,11 @@ try:
     #                $$ LANGUAGE plpgsql;
     #                """)
 
-    cursor.execute("""CREATE TRIGGER t_change_table 
-                   AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
-                   FOR EACH ROW
-                   EXECUTE FUNCTION fn_change_in_table();
-                """)
+    # cursor.execute("""CREATE TRIGGER t_change_table 
+    #                AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
+    #                FOR EACH ROW
+    #                EXECUTE FUNCTION fn_change_in_table();
+    #             """)
     
     # cursor.execute(""" CREATE TRIGGER t_change_table_car_condition
     #                AFTER UPDATE OR INSERT OR DELETE ON car_condition
@@ -164,6 +167,51 @@ try:
     #                EXECUTE FUNCTION fn_change_in_table();
     #             """)    
 
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION select_new_cars(car_name varchar)
+    #                RETURNS numeric AS 
+    #                $$
+    #                     SELECT COUNT (*) FROM  cars
+    #                     WHERE brand like car_name and year >2020
+    #                $$
+
+    #                LANGUAGE SQL
+    #                ;""")
+    # cursor.execute("""DROP FUNCTION IF EXISTS newest_cars()  CASCADE;""")
+    # cursor.execute("""
+    #                 CREATE OR REPLACE FUNCTION newest_cars()
+    #                RETURNS SETOF cars as
+    #                $$
+    #                 SELECT * FROM cars
+    #                ORDER BY year DESC
+    #                LIMIT 5
+    #                ;
+                   
+    #                $$
+    #                LANGUAGE SQL   
+    #             ;""")
+
+    cursor.execute(""" DROP FUNCTION IF EXISTS select_cars(varchar) CASCADE
+                ;""")
+    cursor.execute(""" CREATE OR REPLACE FUNCTION select_cars(cars_name VARCHAR)
+                   RETURNS setof varchar AS
+                   $$
+                   DECLARE
+                        car_brand VARCHAR;
+                    BEGIN
+                        FOR car_brand IN
+                            SELECT brand
+                            FROM cars
+                            WHERE 
+                            brand like cars_name
+                        LOOP
+                            RETURN NEXT car_brand;
+                        END LOOP;
+                        RETURN;
+                    END;
+                   $$
+                   LANGUAGE PLPGSQL;
+                   """)
 except Exception as error:
     print(f"{error}")
 
