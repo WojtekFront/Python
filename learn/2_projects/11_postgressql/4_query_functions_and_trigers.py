@@ -193,25 +193,58 @@ try:
 
     cursor.execute(""" DROP FUNCTION IF EXISTS select_cars(varchar) CASCADE
                 ;""")
-    cursor.execute(""" CREATE OR REPLACE FUNCTION select_cars(cars_name VARCHAR)
-                   RETURNS setof varchar AS
-                   $$
-                   DECLARE
-                        car_brand VARCHAR;
-                    BEGIN
-                        FOR car_brand IN
-                            SELECT brand
-                            FROM cars
-                            WHERE 
-                            brand like cars_name
-                        LOOP
-                            RETURN NEXT car_brand;
-                        END LOOP;
-                        RETURN;
-                    END;
-                   $$
-                   LANGUAGE PLPGSQL;
-                   """)
+    # cursor.execute(""" CREATE OR REPLACE FUNCTION select_cars(cars_name VARCHAR)
+    #                RETURNS setof varchar AS
+    #                $$
+    #                DECLARE
+    #                     car_brand VARCHAR;
+    #                 BEGIN
+    #                     FOR car_brand IN
+    #                         SELECT brand
+    #                         FROM cars
+    #                         WHERE 
+    #                         brand like cars_name
+    #                     LOOP
+    #                         RETURN NEXT car_brand;
+    #                     END LOOP;
+    #                     RETURN;
+    #                 END;
+    #                $$
+    #                LANGUAGE PLPGSQL;
+    #                """)
+    
+    # cursor.execute("""DROP FUNCTION IF EXISTS fn_get_sum(int, int) CASCADE;""")
+
+#     cursor.execute(""" 
+#                 CREATE OR REPLACE FUNCTION fn_get_sum(val1 int, val2 int)
+#                     RETURNS int 
+#                    AS
+#                    $$
+#                    DECLARE
+#                         answear int;
+#                    BEGIN
+#                         answear := val1 +val2;
+#                         RETURN answear;
+#                     END;
+#                    $$
+#                 LANGUAGE PLPGSQL;
+# """)
+#     cursor.execute("""DROP FUNCTION IF EXISTS fn_get_random_val(int, int);
+#                    """)
+#     cursor.execute(""" 
+#                 CREATE OR REPLACE FUNCTION fn_get_random_val(min_val int, max_val int)
+#                     RETURNS float AS
+#                     $$
+#                     DECLARE
+#                         rand float;
+#                         another_val int;
+#                     BEGIN
+#                         SELECT random()INTO rand;
+#                         RETURN rand;
+#                     END;
+#                     $$
+#                 LANGUAGE PLPGSQL;
+# """)
 except Exception as error:
     print(f"{error}")
 
