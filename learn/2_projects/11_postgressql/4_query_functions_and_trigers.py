@@ -245,6 +245,21 @@ try:
 #                     $$
 #                 LANGUAGE PLPGSQL;
 # """)
+
+    # cursor.execute("""DROP FUNCTION IF EXISTS fn_get_sum_2(int, int) CASCADE; """)
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION fn_get_sum_2(IN v1 int, IN v2 int, OUT answear int)  
+                   
+    #                 AS $$
+    #                 BEGIN
+    #                     answear := v1 + v2;
+    #                 END;
+    #                 $$
+    #                 LANGUAGE PLPGSQL""")
+    # cursor.execute("""SELECT fn_get_sum_2(1,100);""")
+
+    
+
 except Exception as error:
     print(f"{error}")
 
