@@ -108,16 +108,16 @@ try:
     #                 BEGIN
     #                     IF TG_OP = 'UPDATE' THEN
     #                             IF OLD IS DISTINCT FROM NEW THEN
-    #                                 INSERT INTO log (planned_maintance, type, description) 
+    #                                 INSERT INTO log (planned_maintenance, type, description) 
     #                                 VALUES (CURRENT_DATE,'update','new2');
     #                             END IF;
     #                         RETURN NEW;
     #                     ELSIF TG_OP = 'INSERT' THEN
-    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             INSERT INTO log (planned_maintenance, type, description) 
     #                             VALUES (CURRENT_DATE,'insert','new1');
     #                         RETURN NEW;                        
     #                     ELSIF TG_OP = 'DELETE' THEN
-    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             INSERT INTO log (planned_maintenance, type, description) 
     #                             VALUES (CURRENT_DATE,'delete','new1');
     #                         RETURN OLD;
     #                     END IF;
@@ -133,16 +133,16 @@ try:
     #                 BEGIN
     #                     IF TG_OP = 'UPDATE' THEN
     #                             IF OLD IS DISTINCT FROM NEW THEN
-    #                                 INSERT INTO log (planned_maintance, type, description) 
+    #                                 INSERT INTO log (planned_maintenance, type, description) 
     #                                 VALUES ('2024-04-15','update','new2');
     #                             END IF;
     #                         RETURN NEW;
     #                     ELSIF TG_OP = 'INSERT' THEN
-    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             INSERT INTO log (planned_maintenance, type, description) 
     #                             VALUES ('2024-04-15','insert','new');
     #                         RETURN NEW;                        
     #                     ELSIF TG_OP = 'DELETE' THEN
-    #                             INSERT INTO log (planned_maintance, type, description) 
+    #                             INSERT INTO log (planned_maintenance, type, description) 
     #                             VALUES ('2024-04-15','delete','new');
     #                         RETURN OLD;
     #                     END IF;
@@ -257,8 +257,15 @@ try:
     #                 $$
     #                 LANGUAGE PLPGSQL""")
     # cursor.execute("""SELECT fn_get_sum_2(1,100);""")
+    cursor.execute(""" DROP FUNCTION IF EXISTS read_log() CASCADE;""")
+    cursor.execute(""" CREATE OR REPLACE FUNCTION read_log()
+                        AS $$
+                        BEGIN
 
-    
+                        END;
+                        $$
+                        LANGUAGE PLPGSQL
+                   ;""")
 
 except Exception as error:
     print(f"{error}")

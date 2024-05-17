@@ -8,7 +8,7 @@ connection, cursor = connect_to_db()
 try:
     cursor.execute("""CREATE TABLE IF NOT EXISTS log(
                    id SERIAL PRIMARY KEY,
-                   planned_maintance DATE NOT NULL,
+                   planned_maintenance DATE NOT NULL,
                    type VARCHAR(50),
                    description VARCHAR(200)
                    );""")
