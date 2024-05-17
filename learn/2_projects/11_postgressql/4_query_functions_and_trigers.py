@@ -33,10 +33,8 @@ try:
     #                SELECT $1 + $2 + $1;
     #                --END;
     #                $body$
-    #                LANGUAGE SQL -- Using the SQL language
-                
+    #                LANGUAGE SQL -- Using the SQL language                
     #                """)
-
 
     # cursor.execute("""
     #           CREATE OR REPLACE FUNCTION fn_test(word varchar, startPos integer,cnt integer) 
@@ -50,7 +48,7 @@ try:
     #                 END;
     #             $$ LANGUAGE plpgsql;
     #             """)
-    # cursor.execute
+
     # cursor.execute("""SELECT  * FROM fn_test('software_it',1,4)""")
     # cursor.execute("""
     #             CREATE OR REPLACE FUNCTION fn_test2(first_word varchar, second_word varchar) 
@@ -66,6 +64,7 @@ try:
     #                 END;
     #             $$ LANGUAGE plpgsql;
     #             """)
+
     # cursor.execute("""SELECT  * FROM fn_test2('software', 'IT');""")
     # cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test3(inout num1 int, inout num2 int)
     #                AS $$
@@ -75,6 +74,7 @@ try:
     #                $$
     #                LANGUAGE plpgsql;
     #                ;""")
+
     # cursor.execute("""SELECT * FROM fn_test3(11, 22)""")
     # cursor.execute(""" CREATE OR REPLACE FUNCTION fn_test4(numeric[])
     #                returns numeric
@@ -94,6 +94,7 @@ try:
     #                $$
     #                LANGUAGE plpgsql
     #                ;""")
+    
     # cursor.execute("""SELECT fn_test4(array[1,2,3,4,5])""")
 
     # cursor.execute("""CREATE TRIGGER t_update_price
@@ -101,6 +102,7 @@ try:
     #                FOR EACH ROW
     #                EXECUTE FUNCTION fn_add_price()
     #                ;""")
+
     # cursor.execute(""" DROP FUNCTION IF EXISTS fn_change_in_table() CASCADE ;""")
     # cursor.execute("""
     #                CREATE OR REPLACE FUNCTION fn_change_in_table()
@@ -124,9 +126,11 @@ try:
     #                 END;
     #                $$ LANGUAGE plpgsql;
     #                """)    
+
     # cursor.execute("""
     #                SELECT MAX(price_gross::NUMERIC) FROM cars;
     #                """)
+
     # cursor.execute("""
     #                CREATE OR REPLACE FUNCTION fn_change_in_table()
     #                 RETURNS TRIGGER AS $$
@@ -161,6 +165,7 @@ try:
     #                FOR EACH ROW
     #                EXECUTE FUNCTION fn_change_in_table();
     #             """)
+
     # cursor.execute(""" CREATE TRIGGER t_change_table_person 
     #                AFTER UPDATE OR INSERT OR DELETE ON person
     #                FOR EACH ROW
@@ -184,15 +189,13 @@ try:
     #                $$
     #                 SELECT * FROM cars
     #                ORDER BY year DESC
-    #                LIMIT 5
-    #                ;
-                   
+    #                LIMIT 5;               
     #                $$
     #                LANGUAGE SQL   
     #             ;""")
 
-    cursor.execute(""" DROP FUNCTION IF EXISTS select_cars(varchar) CASCADE
-                ;""")
+    # cursor.execute(""" DROP FUNCTION IF EXISTS select_cars(varchar) CASCADE
+    #             ;""")
     # cursor.execute(""" CREATE OR REPLACE FUNCTION select_cars(cars_name VARCHAR)
     #                RETURNS setof varchar AS
     #                $$
@@ -213,8 +216,7 @@ try:
     #                LANGUAGE PLPGSQL;
     #                """)
     
-    # cursor.execute("""DROP FUNCTION IF EXISTS fn_get_sum(int, int) CASCADE;""")
-
+#     cursor.execute("""DROP FUNCTION IF EXISTS fn_get_sum(int, int) CASCADE;""")
 #     cursor.execute(""" 
 #                 CREATE OR REPLACE FUNCTION fn_get_sum(val1 int, val2 int)
 #                     RETURNS int 
@@ -228,7 +230,8 @@ try:
 #                     END;
 #                    $$
 #                 LANGUAGE PLPGSQL;
-# """)
+#                 """)
+
 #     cursor.execute("""DROP FUNCTION IF EXISTS fn_get_random_val(int, int);
 #                    """)
 #     cursor.execute(""" 
@@ -243,13 +246,12 @@ try:
 #                         RETURN rand;
 #                     END;
 #                     $$
-#                 LANGUAGE PLPGSQL;
-# """)
+#                   LANGUAGE PLPGSQL;
+#                   """)
 
     # cursor.execute("""DROP FUNCTION IF EXISTS fn_get_sum_2(int, int) CASCADE; """)
     # cursor.execute("""
     #                CREATE OR REPLACE FUNCTION fn_get_sum_2(IN v1 int, IN v2 int, OUT answear int)  
-                   
     #                 AS $$
     #                 BEGIN
     #                     answear := v1 + v2;
@@ -257,15 +259,29 @@ try:
     #                 $$
     #                 LANGUAGE PLPGSQL""")
     # cursor.execute("""SELECT fn_get_sum_2(1,100);""")
+
     cursor.execute(""" DROP FUNCTION IF EXISTS read_log() CASCADE;""")
     cursor.execute(""" CREATE OR REPLACE FUNCTION read_log()
+                        RETURNS SETOF VARCHAR
                         AS $$
+                        DECLARE
+                            new_value varchar;
                         BEGIN
-
+                          FOR new_value IN 
+                            SELECT planned_maintenance 
+                            FROM log
+                            WHERE planned_maintenance = CURRENT_DATE
+                            ORDER BY id DESC
+                         LOOP 
+                            RETURN NEXT new_value;
+                         END LOOP;
+                         RETURN;
                         END;
                         $$
-                        LANGUAGE PLPGSQL
-                   ;""")
+                        LANGUAGE PLPGSQL;
+                   """)
+
+
 
 except Exception as error:
     print(f"{error}")
