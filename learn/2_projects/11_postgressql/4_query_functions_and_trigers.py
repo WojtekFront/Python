@@ -262,26 +262,27 @@ try:
 
     cursor.execute(""" DROP FUNCTION IF EXISTS read_log() CASCADE;""")
     cursor.execute(""" CREATE OR REPLACE FUNCTION read_log()
-                        RETURNS SETOF VARCHAR
+                        RETURNS TABLE(
+                            day_log numeric,
+                            month_log numeric
+                        )
                         AS $$
-                        DECLARE
-                            new_value varchar;
                         BEGIN
-                          FOR new_value IN 
-                            SELECT planned_maintenance 
+                            RETURN QUERY
+                            SELECT EXTRACT(DAY FROM planned_maintenance) AS "DAY", 
+                                   EXTRACT(MONTH FROM planned_maintenance) AS "MONTH"
                             FROM log
                             WHERE planned_maintenance = CURRENT_DATE
-                            ORDER BY id DESC
-                         LOOP 
-                            RETURN NEXT new_value;
-                         END LOOP;
-                         RETURN;
+                            ORDER BY id DESC;
                         END;
                         $$
                         LANGUAGE PLPGSQL;
                    """)
-
-
+    
+    cursor.execute(""" DROP FUNCTION IF EXISTS check_log(int) CASCADE; """)
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION CHECK LOG()
+    #                ;""")
 
 except Exception as error:
     print(f"{error}")
