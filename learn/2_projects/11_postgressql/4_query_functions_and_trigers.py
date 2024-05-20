@@ -103,29 +103,29 @@ try:
     #                EXECUTE FUNCTION fn_add_price()
     #                ;""")
 
-    # cursor.execute(""" DROP FUNCTION IF EXISTS fn_change_in_table() CASCADE ;""")
-    # cursor.execute("""
-    #                CREATE OR REPLACE FUNCTION fn_change_in_table()
-    #                 RETURNS TRIGGER AS $$
-    #                 BEGIN
-    #                     IF TG_OP = 'UPDATE' THEN
-    #                             IF OLD IS DISTINCT FROM NEW THEN
-    #                                 INSERT INTO log (planned_maintenance, type, description) 
-    #                                 VALUES (CURRENT_DATE,'update','new2');
-    #                             END IF;
-    #                         RETURN NEW;
-    #                     ELSIF TG_OP = 'INSERT' THEN
-    #                             INSERT INTO log (planned_maintenance, type, description) 
-    #                             VALUES (CURRENT_DATE,'insert','new1');
-    #                         RETURN NEW;                        
-    #                     ELSIF TG_OP = 'DELETE' THEN
-    #                             INSERT INTO log (planned_maintenance, type, description) 
-    #                             VALUES (CURRENT_DATE,'delete','new1');
-    #                         RETURN OLD;
-    #                     END IF;
-    #                 END;
-    #                $$ LANGUAGE plpgsql;
-    #                """)    
+    cursor.execute(""" DROP FUNCTION IF EXISTS fn_change_in_table() CASCADE ;""")
+    cursor.execute("""
+                   CREATE OR REPLACE FUNCTION fn_change_in_table()
+                    RETURNS TRIGGER AS $$
+                    BEGIN
+                        IF TG_OP = 'UPDATE' THEN
+                                IF OLD IS DISTINCT FROM NEW THEN
+                                    INSERT INTO log (planned_maintenance, type, description) 
+                                    VALUES (CURRENT_DATE,'update','new2');
+                                END IF;
+                            RETURN NEW;
+                        ELSIF TG_OP = 'INSERT' THEN
+                                INSERT INTO log (planned_maintenance, type, description) 
+                                VALUES (CURRENT_DATE,'insert','new1');
+                            RETURN NEW;                        
+                        ELSIF TG_OP = 'DELETE' THEN
+                                INSERT INTO log (planned_maintenance, type, description) 
+                                VALUES (CURRENT_DATE,'delete','new1');
+                            RETURN OLD;
+                        END IF;
+                    END;
+                   $$ LANGUAGE plpgsql;
+                   """)    
 
     # cursor.execute("""
     #                SELECT MAX(price_gross::NUMERIC) FROM cars;
@@ -154,11 +154,11 @@ try:
     #                $$ LANGUAGE plpgsql;
     #                """)
 
-    # cursor.execute("""CREATE TRIGGER t_change_table 
-    #                AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
-    #                FOR EACH ROW
-    #                EXECUTE FUNCTION fn_change_in_table();
-    #             """)
+    cursor.execute("""CREATE TRIGGER t_change_table 
+                   AFTER UPDATE OR INSERT OR DELETE ON cars --, car_condition, person
+                   FOR EACH ROW
+                   EXECUTE FUNCTION fn_change_in_table();
+                """)
     
     # cursor.execute(""" CREATE TRIGGER t_change_table_car_condition
     #                AFTER UPDATE OR INSERT OR DELETE ON car_condition
@@ -260,48 +260,70 @@ try:
     #                 LANGUAGE PLPGSQL""")
     # cursor.execute("""SELECT fn_get_sum_2(1,100);""")
 
-    cursor.execute(""" DROP FUNCTION IF EXISTS read_log() CASCADE;""")
-    cursor.execute(""" CREATE OR REPLACE FUNCTION read_log()
-                        RETURNS TABLE(
-                            day_log numeric,
-                            month_log numeric
-                        )
-                        AS $$
-                        BEGIN
-                            RETURN QUERY
-                            SELECT EXTRACT(DAY FROM planned_maintenance) AS "DAY", 
-                                   EXTRACT(MONTH FROM planned_maintenance) AS "MONTH"
-                            FROM log
-                            WHERE planned_maintenance = CURRENT_DATE
-                            ORDER BY id DESC;
-                        END;
-                        $$
-                        LANGUAGE PLPGSQL;
-                   """)
+    # cursor.execute(""" DROP FUNCTION IF EXISTS read_log() CASCADE;""")
+    # cursor.execute(""" CREATE OR REPLACE FUNCTION read_log()
+    #                     RETURNS TABLE(
+    #                         day_log numeric,
+    #                         month_log numeric
+    #                     )
+    #                     AS $$
+    #                     BEGIN
+    #                         RETURN QUERY
+    #                         SELECT EXTRACT(DAY FROM planned_maintenance) AS "DAY", 
+    #                                EXTRACT(MONTH FROM planned_maintenance) AS "MONTH"
+    #                         FROM log
+    #                         WHERE planned_maintenance = CURRENT_DATE
+    #                         ORDER BY id DESC;
+    #                     END;
+    #                     $$
+    #                     LANGUAGE PLPGSQL;
+    #                """)
     
-    cursor.execute(""" DROP FUNCTION IF EXISTS check_log(int) CASCADE; """)
-    cursor.execute("""
-                   CREATE OR REPLACE FUNCTION check_log(the_month int)
+    # cursor.execute(""" DROP FUNCTION IF EXISTS check_log(int) CASCADE; """)
+    # cursor.execute("""
+    #                CREATE OR REPLACE FUNCTION check_log(the_month int)
+    #                RETURNS varchar AS
+    #                $$
+    #                DECLARE
+    #                 many_logs int;
+    #                BEGIN
+    #                 SELECT COUNT(id) INTO many_logs
+    #                 FROM log
+    #                 WHERE EXTRACT (MONTH FROM planned_maintenance ) = the_month;
+    #                 IF many_logs < 3 THEN
+    #                     RETURN CONCAT( many_logs, ' - lazy time');
+    #                 ELSEIF many_logs >= 3 THEN
+    #                     RETURN CONCAT(many_logs, '- work well');
+    #                 ELSE
+    #                     RETURN 'wrong value';
+    #                 END IF;
+    #                 END;
+    #                 $$
+    #                 LANGUAGE PLPGSQL;
+    #                 ;""")
+
+    cursor.execute(""" DROP FUNCTION IF EXISTS case_check_log( int) CASCADE; """)
+    cursor.execute(""" CREATE OR REPLACE FUNCTION case_check_log( IN the_month int)
                    RETURNS varchar AS
                    $$
                    DECLARE
-                    many_logs int;
-                   BEGIN
-                    SELECT COUNT(id) INTO many_logs
-                    FROM log
-                    WHERE EXTRACT (MONTH FROM planned_maintenance ) = the_month;
-                    IF many_logs < 3 THEN
-                        RETURN CONCAT( many_logs, ' - lazy time');
-                    ELSEIF many_logs >= 3 THEN
-                        RETURN CONCAT(many_logs, '- work well');
-                    ELSE
-                        RETURN 'wrong value';
-                    END IF;
-                    
+                   many_logs numeric;
+                    BEGIN
+                        SELECT count(*) INTO many_logs
+                        FROM log
+                        WHERE EXTRACT(MONTH FROM planned_maintenance)= the_month;
+                        CASE
+                            WHEN many_logs < 3 THEN
+                                RETURN CONCAT( many_logs, ' - lazy time');
+                            WHEN many_logs >= 3 THEN
+                                RETURN CONCAT(many_logs, '- work well');
+                            ELSE
+                                RETURN 'wrong value';
+                        END CASE;
+
                     END;
                     $$
-                    LANGUAGE PLPGSQL;
-                    ;""")
+                   LANGUAGE PLPGSQL;""")
 
 except Exception as error:
     print(f"{error}")
