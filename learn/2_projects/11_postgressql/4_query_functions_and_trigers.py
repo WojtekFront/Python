@@ -280,9 +280,28 @@ try:
                    """)
     
     cursor.execute(""" DROP FUNCTION IF EXISTS check_log(int) CASCADE; """)
-    # cursor.execute("""
-    #                CREATE OR REPLACE FUNCTION CHECK LOG()
-    #                ;""")
+    cursor.execute("""
+                   CREATE OR REPLACE FUNCTION check_log(the_month int)
+                   RETURNS varchar AS
+                   $$
+                   DECLARE
+                    many_logs int;
+                   BEGIN
+                    SELECT COUNT(id) INTO many_logs
+                    FROM log
+                    WHERE EXTRACT (MONTH FROM planned_maintenance ) = the_month;
+                    IF many_logs < 3 THEN
+                        RETURN CONCAT( many_logs, ' - lazy time');
+                    ELSEIF many_logs >= 3 THEN
+                        RETURN CONCAT(many_logs, '- work well');
+                    ELSE
+                        RETURN 'wrong value';
+                    END IF;
+                    
+                    END;
+                    $$
+                    LANGUAGE PLPGSQL;
+                    ;""")
 
 except Exception as error:
     print(f"{error}")
