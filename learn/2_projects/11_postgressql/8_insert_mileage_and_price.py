@@ -22,7 +22,6 @@ try:
     insert_row = cursor.fetchone()
     print(insert_row)
 
-   
 except Exception as error:
     print(f"{error}")
 
