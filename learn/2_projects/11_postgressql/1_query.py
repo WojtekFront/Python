@@ -27,9 +27,7 @@ try:
     cursor.execute("""
         INSERT INTO cars(brand, model, year, color, mileage, price_gross) VALUES(%s, %s, %s, %s , %s, %s)""",(cars_brand, cars_model, cars_data, cars_color, cars_milage, cars_data)           
         )
-    # cursor.execute("""
-    #     INSERT INTO cars(brand, model, year) VALUES(%s, %s, %s)""",(cars_brand, cars_model, cars_data)           
-    #     )
+
     cursor.execute("""
         SELECT * FROM cars
         """)
