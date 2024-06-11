@@ -1,6 +1,5 @@
 from conn import connect_to_db, close_connction
 
-
 """ open connection"""
 connection, cursor = connect_to_db()
 
