@@ -258,7 +258,8 @@ try:
     #                 $$
     #                 LANGUAGE PLPGSQL""")
     # cursor.execute("""SELECT fn_get_sum_2(1,100);""")
-
+ 
+ 
     # cursor.execute(""" DROP FUNCTION IF EXISTS read_log() CASCADE;""")
     # cursor.execute(""" CREATE OR REPLACE FUNCTION read_log()
     #                     RETURNS TABLE(
