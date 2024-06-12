@@ -8,7 +8,6 @@ connection, cursor = connect_to_db()
 new_cars_price = 1000 * random.randrange(20, 200)
 cars_id = random.randrange(1, 25)
 
-   
 try:
     # cursor.execute(""" DROP FUNCTION IF EXISTS fn_add_price() CASCADE;""")
     # cursor.execute("""
