@@ -6,3 +6,9 @@ for row in number_grid:
 
 
 # print(number_grid[0][0])
+
+
+flat = [i for row in number_grid 
+        for i in row]
+
+print(flat)
