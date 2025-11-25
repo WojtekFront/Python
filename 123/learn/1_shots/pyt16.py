@@ -1,19 +1,62 @@
 # -------------------------------------------
+
+
+
+# def my_function(a, b):
+#   return a + b 
+
+# numbers = [1, 2]
+# result = my_function(*numbers)
+# print(result)
+
+
+
+def my_function(title, *star, **kwargs):
+  print("Title:", title)
+  print("Positional arguments:", star)
+  print("Keyword arguments:", kwargs["city"])
+  print("Keyword arguments:", kwargs.get("age", "puste"))
+
+
+# my_function("User Info", "Emil", "Tobias", "John",  city = "Oslo")
+
+
+
+def nowafunkcja(**test):
+    print("Name: " + test["name"])
+    print("Lastname: " + test["lastname"])
+    print("Lastname2: " + test.get("lastname2","Nieznane"))
+
+# nowafunkcja(name="Jan", lastname ="Maria", lastname2 ="Rokita")
+# nowafunkcja(name="Anna", lastname="Kowalska")
+
+
+
+# nowafunkcja("Jan")
+
+
+  
+
+
+
+def nowafunkcja(*args):
+    total =0
+    for num in args:
+        total +=num
+    return total
+
+# print(nowafunkcja(1,2,3,4))
+
+
+
 # -------------------------------------------
 
 def dictionaryArgument(person):
     print("Person age: " , person["age"])
     return 1
 
-person1 = { "name": "Emil", "age": 30}
-dictionaryArgument(person1)
-
-
-
-
-
-
-
+# person1 = { "name": "Emil", "age": 30}
+# dictionaryArgument(person1)
 
 # -------------------------------------------
 
